@@ -1,6 +1,6 @@
-package app.proyecto.repository;
+package app.project.repository;
 
-import app.proyecto.entity.Product;
+import app.project.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +10,6 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // TODO add year column
-    List<Product> findAllByYear(Integer year);
+//    List<Product> findAllByYear(Integer year);
 
 }

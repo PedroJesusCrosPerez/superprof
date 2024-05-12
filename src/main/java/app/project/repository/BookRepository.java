@@ -1,6 +1,6 @@
-package app.proyecto.repository;
+package app.project.repository;
 
-import app.proyecto.entity.Book;
+import app.project.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
