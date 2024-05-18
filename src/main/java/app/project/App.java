@@ -47,29 +47,13 @@ public class App {
                 null
         );
 
-        Agreement agreement2 = new Agreement(
-                null,
-                LocalDateTime.of(2023, 10, 20, 9, 0, 0),
-                LocalDateTime.of(2023, 10, 20, 10, 0, 0),
-                2,
-                teacher2,
-                student1,
-                null
-        );
+        var subjectRepository = context.getBean(SubjectRepository.class);
 
-        Agreement agreement3 = new Agreement(
-                null,
-                LocalDateTime.of(2023, 11, 21, 14, 0, 0),
-                LocalDateTime.of(2023, 11, 21, 15, 0, 0),
-                3,
-                teacher1,
-                student2,
-                null
-        );
-
-        List<Agreement> agreementList = Arrays.asList(agreement1, agreement2, agreement3);
-        agreementRepository.saveAll(agreementList);
-
-        System.out.println(agreementList);
+        subjectRepository.saveAll(Arrays.asList(
+                new Subject(null, "Informática"),
+                new Subject(null, "Matemáticas"),
+                new Subject(null, "Lengua")
+        ));
     }
+
 }
