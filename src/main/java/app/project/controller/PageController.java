@@ -2,6 +2,8 @@ package app.project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class PageController {
@@ -59,6 +61,11 @@ public class PageController {
     @GetMapping("/home")
     public String home() {
         return "home";
+    }
+
+    @GetMapping("/teacher")
+    public String teacherById(@RequestParam(defaultValue = "1") Long idTeacher) {
+        return "findByIdTeacher";
     }
 
 }
