@@ -1,17 +1,12 @@
 package app.project;
 
-import app.project.entity.Product;
-import app.project.repository.ProductRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.util.Arrays;
-import java.util.List;
-
 @SpringBootApplication
 public class App {
-
+// TODO terminar teacher
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
 
