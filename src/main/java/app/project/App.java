@@ -6,7 +6,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class App {
-// TODO terminar teacher
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
 
