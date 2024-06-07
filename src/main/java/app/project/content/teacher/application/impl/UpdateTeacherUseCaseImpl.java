@@ -14,7 +14,7 @@ public class UpdateTeacherUseCaseImpl implements UpdateTeacherUseCase {
 
     @Override
     public Teacher updateTeacher(Teacher teacher) {
-//        return updateUserRepository.updateUser(user);
+//        return updateUserRepository.updateUser(user2);
         return new Teacher();
     }
 }

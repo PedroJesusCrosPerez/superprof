@@ -8090,7 +8090,7 @@ textarea.inputN {
 .notification-close {
     width: 10px;
     height: 10px;
-    background: url("svg/pictos/close.svg");
+    background: url("../images/icons/close.svg");
     -webkit-background-size: contain;
     background-size: contain;
     background-position: center center;

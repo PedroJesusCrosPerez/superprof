@@ -11,7 +11,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/superprof_db?createDatabaseIfNotExist=true
     username: root
-    password:
+    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -26,6 +26,12 @@ spring:
         mode: always
         platform: mysql
     defer-datasource-initialization: true
+
+pedro:
+  vars:
+    jwtSecret: ======================Pedro=APP=in=Spring===========================
+    jwtExpirationMs: 86400000
+
 
 # Produccion: Liquibase y Flyway
 

@@ -28,7 +28,7 @@
 //
 ////    @GetMapping("/entity/userAll")
 ////    public String testEntity(Model model) {
-////        model.addAttribute(String.valueOf(new UserAll(3L, "pedro@gmail.es", "1234", "pedro", "cros")), "user");
+////        model.addAttribute(String.valueOf(new UserAll(3L, "pedro@gmail.es", "1234", "pedro", "cros")), "user2");
 ////        return "home2"; // Esto asume que tienes una vista llamada "header.html"
 ////    }
 //}
