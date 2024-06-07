@@ -27,6 +27,8 @@ public interface SubjectMapper {
     // DTO
     List<SubjectOutputDto> toOutputDtoList(List<Subject> subjectList);
 
+    List<SubjectOutputDtoFull> toOutputDtoFullList(List<Subject> subjectList);
+
     SubjectOutputDtoFull toOutputDtoFull(Subject subject);
 
     SubjectOutputDto toOutputDto(Subject subject);
