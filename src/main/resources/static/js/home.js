@@ -2,46 +2,59 @@ $(function () {
     console.log("home.js: Javascript works!!!")
 
 
-    let modal = $('#connect-modal div.common-modal')[0]
-    let modalHideContent = $('#connect-modal div.connect')[0]
-    let crossModalIcon = $('#crossModal')
+    let modal = $('#connect-modal div.common-modal')
+    let modalHideContent = $('#connect-modal div.connect')
+    let btnCrossModal = $('#crossModal')
+    let loader = $('#connect-modal div.v-loader')
 
     let aSignUp = $('#aSignUp')
+    let signUpForm = $('div.popin-content.signup')
 
     let aSignIn = $('#aSignIn')
+    let signInForm = $('div.popin-content.signin')
 
 
     aSignUp.on("click", function (event) {
 
-        console.log("home.js: aSignUp clicked!!!")
         event.preventDefault()
 
-        modalHideContent.removeClass("loading")
-        modalHideContent.removeClass("hide-content")
         modal.addClass("visible")
+        signUpForm.addClass("visible")
 
-        crossModalIcon.on("click", function () {
-            modalSignUp.removeClass("visible")
-        })
+        resetModal()
     })
 
     aSignIn.on("click", function (event) {
 
-        console.log("home.js: aSignIn clicked!!!")
         event.preventDefault()
 
-        modalHideContent.removeClass("loading")
-        modalHideContent.removeClass("hide-content")
         modal.addClass("visible")
+        signInForm.addClass("visible")
 
-        crossModalIcon.on("click", function () {
-            modal.removeClass("visible")
-        })
+        resetModal()
     })
-})
 
-$() ({
-    console.log("home222222.js: Javascript works!!!")
+    btnCrossModal.on("click", function () {
+
+        modalHideContent.addClass("loading hide-content")
+        modal.removeClass("visible")
+        loader.addClass("visible")
+
+        signUpForm.removeClass("visible")
+        signInForm.removeClass("visible")
+
+        btnCrossModal.addClass("hide-content")
+    })
+
+    function resetModal() {
+
+        setTimeout(function() {
+
+            modalHideContent.removeClass("loading hide-content")
+            loader.removeClass("visible")
+            btnCrossModal.addClass("visible")
+        }, 1200);
+    }
 })
 
 //$({

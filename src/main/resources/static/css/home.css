@@ -8577,7 +8577,7 @@ ul.component-pagination {
 .popin-close {
     width: 13px;
     height: 13px;
-    background: url("svg/pictos/close.svg");
+    background: url("../images/icons/close.svg");
     -webkit-background-size: contain;
     background-size: contain;
     background-position: center center;
@@ -9825,7 +9825,13 @@ ul.component-pagination {
     display: flex;
     padding: 6px;
     margin: -6px;
-    cursor: pointer
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.cross.visible {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 @media all and (max-width: 980px) {
@@ -9838,7 +9844,7 @@ ul.component-pagination {
     width: 15px;
     height: 15px;
     display: inline-block;
-    background-image: url("svg/pictos/close.svg");
+    background: url("../images/icons/close.svg");
     -webkit-background-size: contain;
     background-size: contain
 }

@@ -2130,7 +2130,7 @@
                     <div class="mask-modal"></div>
                     <div class="wrapper">
                         <div class="container">
-                            <div class="cross"><span id="crossModal" class="picto"></span></div>
+                            <div class="cross" id="crossModal"><span class="picto visible"></span></div>
                             <div class="v-loader visible center">
                                 <div class="dot dot1"></div>
                                 <div class="dot dot2"></div>
@@ -2138,9 +2138,10 @@
                                 <div class="dot dot4"></div>
                             </div>
                             <div class="popin-content signup">
-                                <div class="upper"><p class="title"></p>
-                                    <div class="email-inputs">
-                                        <form id="signup-form recaptcha-enabled">
+                                <div class="upper">
+                                    <p class="title">Crear cuenta</p>
+                                    <div class="register">
+                                        <form id="signup-form">
                                             <div class="input-holder pending">
                                                 <span class="label" style="top: -20px;">Name</span>
                                                 <input name="name" placeholder="Name" type="text">
@@ -2160,23 +2161,30 @@
                                 <div class="bottom">
                                     <div class="buttons-container">
                                         <div class="social-buttons">
+                                            <a class="big-button facebook">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Facebook</p>
+                                            <p class="text short">Facebook</p>
+                                        </a>
                                             <div class="big-button google google-connect">
                                                 <div class="picto"></div>
-                                                <p class="text long"></p>
-                                                <p class="text short"></p>
+                                                <p class="text long">Inscripción con Google</p>
+                                                <p class="text short">Google</p>
                                             </div>
                                         </div>
                                         <div class="big-button mail">
-                                            <div class="picto"></div>
-                                            <p class="text"></p>
+                                            <p class="text">Crear mi cuenta</p>
                                         </div>
                                     </div>
-                                    <div class="sign-text"><span></span> <span class="emphasis"></span></div>
-                                    <div class="signin-cgu"><p></p></div>
+                                    <div class="sign-text">
+                                        <span>¿Ya tienes una cuenta?</span>
+                                        <span class="emphasis">Iniciar sesión</span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="popin-content signin">
-                                <div class="upper"><p class="title"></p>
+                                <div class="upper">
+                                    <p class="title">Iniciar Sesión</p>
                                     <div class="login">
                                         <form id="signin-form">
                                             <div class="input-holder pending">
@@ -2189,31 +2197,46 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <p class="error-text" style="display: none;"></p></div>
+                                    <p class="error-text" style="display: none;"></p>
+                                </div>
                                 <div class="bottom">
                                     <div class="buttons-container">
                                         <div class="social-buttons">
+                                            <a class="big-button facebook">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Facebook</p>
+                                            <p class="text short">Facebook</p></a>
                                             <div class="big-button google google-connect">
                                                 <div class="picto"></div>
-                                                <p class="text long"></p>
-                                                <p class="text short"></p></div>
+                                                <p class="text long">Inscripción con Google</p>
+                                                <p class="text short">Google</p>
+                                            </div>
                                         </div>
-                                        <div class="big-button mail"><p class="text"></p></div>
+                                        <div class="big-button mail">
+                                            <p class="text">Conexión</p>
+                                        </div>
                                     </div>
-                                    <div class="sign-text"><span></span> <span class="emphasis"></span></div>
-                                    <p class="forgot-password"></p></div>
+                                    <div class="sign-text">
+                                        <span>¿No tienes una cuenta?</span>
+                                        <span class="emphasis">Registro</span>
+                                    </div>
+                                    <p class="forgot-password">¿Has olvidado tu contraseña?</p>
+                                </div>
                             </div>
                             <div class="popin-content reset">
                                 <div class="reset"><p class="title">Restablecer mi contraseña</p>
                                     <p class="text">Para recuperar tu contraseña, introduce el correo electrónico de tu
                                         cuenta en el campo inferior.</p>
-                                    <div class="input-holder pending"><span class="label"
-                                                                            style="top: -20px;">E-mail</span> <input
-                                            placeholder="E-mail" type="text"></div>
+                                    <div class="input-holder pending">
+                                        <span class="label" style="top: -20px;">E-mail</span>
+                                        <input placeholder="E-mail" type="text">
+                                    </div>
                                     <p class="success-text" style="display: none;"></p>
                                     <p class="error-text" style="display: none;"></p>
-                                    <p class="send-button"><span class="text">Enviar</span></p>
-                                    <div class="back"><span class="arrow text">Volver a la pantalla de conexión</span>
+                                    <p class="send-button">
+                                        <span class="text">Enviar</span></p>
+                                    <div class="back">
+                                        <span class="arrow text">Volver a la pantalla de conexión</span>
                                     </div>
                                 </div>
                             </div>
