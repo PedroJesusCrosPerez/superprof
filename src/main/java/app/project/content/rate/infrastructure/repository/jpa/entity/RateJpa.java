@@ -19,6 +19,6 @@ public class RateJpa {
     @Column(name = "id_rate")
     private Long idRate;
 
-    @Column(name = "rate")
-    private Double rate;
+    @Column(name = "price_hour")
+    private Double pricePerHour;
 }

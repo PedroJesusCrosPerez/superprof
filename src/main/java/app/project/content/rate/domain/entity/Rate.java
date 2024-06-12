@@ -11,5 +11,6 @@ import lombok.Setter;
 @Setter
 public class Rate {
 
-    private Double rate;
+    private Long idRate;
+    private Double pricePerHour;
 }

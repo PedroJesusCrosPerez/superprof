@@ -31,7 +31,8 @@ public class LanguageRepositoryImpl implements LanguageRepository {
 
         return languageRepositoryJpa.findById(idLanguage)
                 .map(LanguageMapper.INSTANCE::toEntity)
-                .orElseThrow(); // TODO throw exception bien
+                .orElseThrow(() -> new NotFoundException(Language.class, idLanguage))
+                ;
     }
 
     @Override
@@ -44,12 +45,27 @@ public class LanguageRepositoryImpl implements LanguageRepository {
 
     @Override
     public Language update(Language language) throws NotFoundException, UnprocessableEntityException {
+        var languageJpa = languageRepositoryJpa.findById(language.getIdLanguage())
+                .orElseThrow(() -> new NotFoundException(Language.class, language.getIdLanguage()));
 
-        return null;
+        // Update fields of languageJpa with values from language
+        // Assuming Language and LanguageJpa have the same fields
+        languageJpa.setName(language.getName());
+        // Repeat for other fields...
+
+        var updatedLanguageJpa = languageRepositoryJpa.save(languageJpa);
+
+        return LanguageMapper.INSTANCE.toEntity(updatedLanguageJpa);
     }
 
     @Override
-    public Boolean delete(Long idLanguage) throws NotFoundException {
-        return null;
+    public Boolean delete(Long idLanguage) {
+
+        languageRepositoryJpa.delete(
+                languageRepositoryJpa.findById(idLanguage)
+                        .orElseThrow(() -> new NotFoundException(Language.class, idLanguage))
+        );
+
+        return true;
     }
 }
