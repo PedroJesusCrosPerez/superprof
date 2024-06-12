@@ -13,5 +13,7 @@ public class Teacher {
 
     private Long idTeacher;
     private String name;
-    private String surname;
+    private String city;
+    private String surname; // TODO borrar, añadir
+    private Boolean is;
 }
