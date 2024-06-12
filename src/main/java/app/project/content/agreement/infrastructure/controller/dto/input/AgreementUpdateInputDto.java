@@ -1,7 +1,7 @@
-package app.project.content.agreement.domain.entity;
+package app.project.content.agreement.infrastructure.controller.dto.input;
 
-import app.project.content.language.domain.entity.Language;
-import app.project.content.rate.domain.entity.Rate;
+import app.project.content.language.infrastructure.controller.dto.input.LanguageInputDto;
+import app.project.content.rate.infrastructure.controller.dto.input.RateInputDto;
 import app.project.shared.enums.EPlace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,13 +14,13 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Agreement {
+public class AgreementUpdateInputDto {
 
     private Long idAgreement;
     private String title;
     private String description;
     private String aboutMe;
     private List<EPlace> places;
-    private List<Language> languages;
-    private Rate rate;
+    private List<LanguageInputDto> languages;
+    private RateInputDto rate;
 }
