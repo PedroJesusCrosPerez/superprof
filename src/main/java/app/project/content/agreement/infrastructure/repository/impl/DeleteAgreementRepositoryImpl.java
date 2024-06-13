@@ -1,6 +1,7 @@
 package app.project.content.agreement.infrastructure.repository.impl;
 
 import app.project.content.agreement.domain.repository.DeleteAgreementRepository;
+import app.project.content.agreement.infrastructure.repository.jpa.AgreementRepositoryJpa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -8,12 +9,17 @@ import org.springframework.stereotype.Repository;
 @RequiredArgsConstructor
 public class DeleteAgreementRepositoryImpl implements DeleteAgreementRepository {
 
-    private final DeleteAgreementRepository deleteAgreementRepository;
+    private final AgreementRepositoryJpa agreementRepositoryJpa;
 
 
     @Override
     public Boolean delete(Long idAgreement) {
 
-        return deleteAgreementRepository.delete(idAgreement);
+        if (!agreementRepositoryJpa.existsById(idAgreement)) {
+            return false;
+        }
+        agreementRepositoryJpa.deleteById(idAgreement);
+
+        return true;
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="layout(titulo, css, js, contenido)">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,6 +23,20 @@
 <body>
 
 <header>
+    <div sec:authorize="isAuthenticated()">
+        <p>Hola, <span sec:authentication="name">usuario</span>!</p>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <p>usuario NO logeado!</p>
+    </div>
+
+    <div sec:authorize="hasAuthority('ADMIN')">
+        This content is only shown to administrators.
+    </div>
+    <div sec:authorize="hasAuthority('USER')">
+        This content is only shown to users.
+    </div>
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <a href="#" th:href="@{/home}">Home</a>
         <a href="#" th:href="@{/index}">Inicio</a>

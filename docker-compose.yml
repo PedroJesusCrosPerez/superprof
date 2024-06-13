@@ -1,0 +1,31 @@
+version: '1'
+
+services:
+#    superprof_backend:
+#        image: superprof
+#        container_name: superprof
+#        build:
+#            context: .
+#            dockerfile: Dockerfile
+#        ports:
+#            - "8000:8000"
+#        volumes:
+#            - .:/app
+#        depends_on:
+#            - database
+
+    database:
+        image: mysql:8.4.0
+        container_name: superprof_database
+        environment:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: superprof_db
+          MYSQL_USER: pedro
+          MYSQL_PASSWORD: pedro
+        ports:
+            - "3306:3306"
+#        networks:
+#        - superprofnet
+
+
+# docker-compose up -d
