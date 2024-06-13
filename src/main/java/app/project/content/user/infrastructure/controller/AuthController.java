@@ -102,20 +102,25 @@ public class AuthController {
                 encoder.encode(signUpRequest.getPassword())
         );
 
+        user.setId(userRepository.save(user).getId()); // Generate ID
+
+
         user.addRole(
                 roleRepository.findByName(ERole.ROLE_UNASSIGNED)
                         .orElseThrow(
                                 () -> new RuntimeException("Error: there aren't default roles assigned in Role table.")
                         )
         );
-        userRepository.save(user);
+
+        User newUser = userRepository.save(user);
 
         return  ResponseEntity
                 .status(
                         HttpStatus.CREATED
                 )
                 .body(
-                        new MessageResponse("User registered successfully!")
+//                        newUser
+                        new MessageResponse("User registered successfully!" + newUser.toString())
                 );
     }
 }

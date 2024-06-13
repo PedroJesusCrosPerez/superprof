@@ -2,10 +2,7 @@ package app.project.content.role.domain.entity;
 
 import app.project.shared.enums.ERole;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "roles")
@@ -13,13 +10,15 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 public class Role {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id_role")
   private Integer id;
 
   @Enumerated(EnumType.STRING)
-  @Column(length = 20)
+  @Column(name = "name", length = 20)
   private ERole name;
 
   public Role(ERole name) {

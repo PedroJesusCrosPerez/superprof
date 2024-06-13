@@ -22,6 +22,7 @@
 </head>
 <body>
 
+<!--
 <header>
     <div sec:authorize="isAuthenticated()">
         <p>Hola, <span sec:authentication="name">usuario</span>!</p>
@@ -43,6 +44,11 @@
         <a href="#" th:href="@{/details}">Details</a>
     </nav>
 </header>
+-->
+
+<header sec:authorize="!isAuthenticated()" th:insert="layout/header_notAuthenticated"></header>
+
+<header sec:authorize="hasAuthority('ADMIN')" th:insert="layout/header"></header>
 
 <main>
     <div th:insert="${contenido}"></div>

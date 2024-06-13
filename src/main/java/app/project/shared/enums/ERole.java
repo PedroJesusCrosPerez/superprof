@@ -2,11 +2,11 @@ package app.project.shared.enums;
 
 public enum ERole {
 
-    ROLE_ADMIN("ADMIN"),
-    ROLE_TEACHER("TEACHER"),
-    ROLE_STUDENT("STUDENT"),
-    ROLE_USER("USER"),
-    ROLE_UNASSIGNED("UNASSIGNED");
+    ROLE_ADMIN("ROLE_ADMIN"),
+    ROLE_TEACHER("ROLE_TEACHER"),
+    ROLE_STUDENT("ROLE_STUDENT"),
+    ROLE_USER("ROLE_USER"),
+    ROLE_UNASSIGNED("ROLE_UNASSIGNED");
 
     private final String role;
 

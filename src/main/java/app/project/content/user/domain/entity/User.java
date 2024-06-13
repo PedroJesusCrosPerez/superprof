@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -17,6 +14,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
+@ToString
 @Entity
 @Table(name = "users", 
     uniqueConstraints = { 
@@ -31,21 +29,25 @@ public class User {
 
   @NotBlank
   @Size(max = 20)
+  @Column(name = "username", nullable = false, length = 50, unique = true)
   private String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
+  @Column(name = "email", nullable = false, length = 50, unique = true)
   private String email;
 
   @NotBlank
   @Size(max = 120)
+  @Column(name = "password", nullable = false)
   private String password;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
+        joinColumns = @JoinColumn(name = "id_user"),
+        inverseJoinColumns = @JoinColumn(name = "id_role"))
+  @Column(name = "roles")
   private Set<Role> roles = new HashSet<>();
 
   public User(String username, String email, String password) {
