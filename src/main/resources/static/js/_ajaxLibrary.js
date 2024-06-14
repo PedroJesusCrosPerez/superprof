@@ -1,3 +1,24 @@
+function ajaxRequest(url, method, data, successCallback, errorCallback) {
+    $.ajax({
+        url: url,
+        type: method,
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        dataType: "json",
+        success: function(response) {
+            if (successCallback) {
+                successCallback(response);
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (errorCallback) {
+                errorCallback(jqXHR, textStatus, errorThrown);
+            }
+        }
+    });
+}
+
+/*
 // Definir la URL del endpoint
 var url = "http://localhost:8080/auth/signup";
 
@@ -25,3 +46,4 @@ $.ajax({
         console.error('Error:', textStatus, errorThrown);
     }
 });
+ */

@@ -1,5 +1,6 @@
 
 <div id="sp-vue-container">
+    <!-- HEADER -->
     <header class="header-superprof super-header absolute-mode sticky-thresold disable-main-background"
             style="--base-background-main: var(--base-color-white); --base-background-sticky: var(--base-color-white); --base-background-search-engine-container: var(--base-color-grey-light); --base-background-button: var(--base-color-grey-light); --base-button-hover: var(--base-color-pink); --base-background-button-open-highlight: var(--base-color-pink); --base-font-color: var(--base-color-black); --base-font-color-hover: var(--base-color-white);">
 
@@ -179,10 +180,8 @@
                     </svg>
                 </i>
                 </a>
-                <a id="aSignUp" class="basic-header-button caption">Dar clases particulares</a>
-                <button id="aSignIn" class="basic-header-button caption">
-                    Conectarse
-                </button>
+                <a id="aSignUp" class="basic-header-button caption">Crear cuenta</a>
+                <button id="aSignIn" class="basic-header-button caption">Iniciar sesión</button>
                 <div class="interaction-wrapper">
                     <div class="icons-menu"><span></span><span></span><span></span>
                     </div>
@@ -960,4 +959,136 @@
             </div>
         </div>-->
     </header>
+
+    <!-- MODAL -->
+    <div id="connect-modal">
+        <div class="connect loading hide-content">
+            <div class="common-modal">
+                <div class="mask-modal"></div>
+                <div class="wrapper">
+                    <div class="container">
+                        <div class="cross" id="crossModal"><span class="picto visible"></span></div>
+                        <div class="v-loader visible center">
+                            <div class="dot dot1"></div>
+                            <div class="dot dot2"></div>
+                            <div class="dot dot3"></div>
+                            <div class="dot dot4"></div>
+                        </div>
+                        <div class="popin-content signup">
+                            <div class="upper">
+                                <p class="title">Registro</p>
+                                <div class="register">
+                                    <form id="signup-form" th:action="@{/auth/signup}" method="post">
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Name</span>
+                                            <input name="username" placeholder="Nombre de usuario" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">E-mail</span>
+                                            <input name="email" placeholder="Correo electrónico" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Contraseña</span>
+                                            <input name="password" placeholder="Contraseña" type="password">
+                                        </div>
+                                    </form>
+                                </div>
+                                <p class="error-text" style="display: none;"></p>
+                            </div>
+                            <div class="bottom">
+                                <!--
+                                <div class="buttons-container">
+                                    <div class="social-buttons">
+                                        <a class="big-button facebook">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Facebook</p>
+                                            <p class="text short">Facebook</p>
+                                        </a>
+                                        <div class="big-button google google-connect">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Google</p>
+                                            <p class="text short">Google</p>
+                                        </div>
+                                    </div>
+                                    -->
+                                    <div class="big-button mail" id="submitSignUp">
+                                        <p class="text">Crear mi cuenta</p>
+                                    </div>
+                                <!--
+                                </div>
+
+                                <div class="sign-text">
+                                    <span>¿Ya tienes una cuenta?</span>
+                                    <span class="emphasis">Iniciar sesión</span>
+                                </div>
+                                -->
+                            </div>
+                        </div>
+                        <div class="popin-content signin">
+                            <div class="upper">
+                                <p class="title">Iniciar Sesión</p>
+                                <div class="login">
+                                    <form id="signin-form" th:action="@{/auth/signin}" method="post">
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;" name="email">E-mail</span>
+                                            <input name="username" placeholder="Nombre de usuario" type="text">
+                                        </div>
+                                        <div class="input-holder pending">
+                                            <span class="label" style="top: -20px;">Contraseña</span>
+                                            <input name="password" placeholder="Contraseña" type="password">
+                                        </div>
+                                    </form>
+                                </div>
+                                <p class="error-text" style="display: none;"></p>
+                            </div>
+                            <div class="bottom">
+                                <!--
+                                <div class="buttons-container">
+                                    <div class="social-buttons">
+                                        <a class="big-button facebook">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Facebook</p>
+                                            <p class="text short">Facebook</p></a>
+                                        <div class="big-button google google-connect">
+                                            <div class="picto"></div>
+                                            <p class="text long">Inscripción con Google</p>
+                                            <p class="text short">Google</p>
+                                        </div>
+                                    </div>
+                                    -->
+                                    <div class="big-button mail" id="submitSignIn">
+                                        <p class="text">Entrar</p>
+                                    </div>
+                                    <!--
+                                </div>
+                                <div class="sign-text">
+                                    <span>¿No tienes una cuenta?</span>
+                                    <span class="emphasis">Registro</span>
+                                </div>
+                                <p class="forgot-password">¿Has olvidado tu contraseña?</p>
+                                -->
+                            </div>
+                        </div>
+                        <div class="popin-content reset">
+                            <div class="reset"><p class="title">Restablecer mi contraseña</p>
+                                <p class="text">Para recuperar tu contraseña, introduce el correo electrónico de tu
+                                    cuenta en el campo inferior.</p>
+                                <div class="input-holder pending">
+                                    <span class="label" style="top: -20px;">E-mail</span>
+                                    <input placeholder="E-mail" type="text">
+                                </div>
+                                <p class="success-text" style="display: none;"></p>
+                                <p class="error-text" style="display: none;"></p>
+                                <p class="send-button">
+                                    <span class="text">Enviar</span></p>
+                                <div class="back">
+                                    <span class="arrow text">Volver a la pantalla de conexión</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

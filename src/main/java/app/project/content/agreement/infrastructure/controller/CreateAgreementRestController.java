@@ -1,7 +1,9 @@
 package app.project.content.agreement.infrastructure.controller;
 
 import app.project.content.agreement.application.CreateAgreementUseCase;
+import app.project.content.agreement.application.mapper.AgreementEntityMapper;
 import app.project.content.agreement.domain.entity.Agreement;
+import app.project.content.agreement.infrastructure.controller.dto.input.AgreementInputDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +21,19 @@ public class CreateAgreementRestController {
 
 
     @PostMapping
-    public ResponseEntity<Long> createAgreement(@RequestBody Agreement agreement) {
+    public ResponseEntity<Long> createAgreement(@RequestBody AgreementInputDto agreementInputDto) {
+
+        Agreement agreement = AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto);
 
         return  ResponseEntity
                 .status(
                         HttpStatus.CREATED
                 )
                 .body(
-                        createAgreementUseCase.save(agreement)
+                        createAgreementUseCase.save(
+//                                AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto)
+                                agreementInputDto
+                        )
                 );
     }
 }

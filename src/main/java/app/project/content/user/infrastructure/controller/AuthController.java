@@ -123,4 +123,43 @@ public class AuthController {
                         new MessageResponse("User registered successfully!" + newUser.toString())
                 );
     }
+
+
+//    @GetMapping("/signin/accepted")
+//    public String postSignIn() {
+//
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String role = authentication.getAuthorities().stream()
+//                .map(GrantedAuthority::getAuthority)
+//                .findFirst()
+//                .orElse("");
+//
+//        if (role.equals("ROLE_ADMIN")) {
+//            return "redirect:/admin/dashboard";
+//        } else if (role.equals("ROLE_TEACHER")) {
+//            return "redirect:/teacher/dashboard";
+//        } else if (role.equals("ROLE_USER")) {
+//            return "redirect:/user/dashboard";
+//        } else {
+//            return "redirect:/";
+//        }
+//    }
+    @GetMapping("/signin/accepted")
+    public String postSignIn(@RequestParam("token") String token) {
+        // Aquí puedes verificar el token y obtener el usuario correspondiente
+        // Por ahora, solo obtenemos el usuario autenticado actualmente
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String role = authentication.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("");
+
+        if (role.equals("ROLE_ADMIN")) {
+            return "redirect:/admin/dashboard";
+        } else if (role.equals("ROLE_USER")) {
+            return "redirect:/user/dashboard";
+        } else {
+            return "redirect:/";
+        }
+    }
 }

@@ -6,6 +6,7 @@ import app.project.content.subject.infrastructure.controller.dto.output.SubjectO
 import app.project.content.subject.infrastructure.repository.jpa.entity.SubjectJpa;
 import app.project.content.subject.domain.entity.Subject;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -16,10 +17,12 @@ public interface SubjectMapper {
     SubjectMapper INSTANCE = Mappers.getMapper(SubjectMapper.class);
 
     // Entity
+    @Mapping(target = "idSubject", ignore = true)
     Subject toEntity(SubjectInputDto subjectInputDto);
 
     Subject toEntity(SubjectJpa subjectJpa);
 
+    @Mapping(source = "idSubject", target = "idSubject", ignore = true)
     SubjectJpa toEntityJpa(Subject subject);
 
     List<Subject> toEntityList(List<SubjectJpa> subjectJpaList);

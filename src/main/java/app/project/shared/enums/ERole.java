@@ -6,7 +6,8 @@ public enum ERole {
     ROLE_TEACHER("ROLE_TEACHER"),
     ROLE_STUDENT("ROLE_STUDENT"),
     ROLE_USER("ROLE_USER"),
-    ROLE_UNASSIGNED("ROLE_UNASSIGNED");
+    ROLE_UNASSIGNED("ROLE_UNASSIGNED")
+    ;
 
     private final String role;
 

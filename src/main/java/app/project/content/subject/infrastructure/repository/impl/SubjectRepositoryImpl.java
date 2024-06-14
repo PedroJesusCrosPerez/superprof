@@ -4,6 +4,7 @@ import app.project.content.subject.application.mapper.SubjectMapper;
 import app.project.content.subject.domain.entity.Subject;
 import app.project.content.subject.domain.repository.SubjectRepository;
 import app.project.content.subject.infrastructure.repository.jpa.SubjectRepositoryJpa;
+import app.project.content.subject.infrastructure.repository.jpa.entity.SubjectJpa;
 import app.project.shared.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -20,8 +21,10 @@ public class SubjectRepositoryImpl implements SubjectRepository {
     @Override
     public Long saveSubject(Subject subject) {
 
+        SubjectJpa subjectJpa = SubjectMapper.INSTANCE.toEntityJpa(subject);
         return subjectRepositoryJpa.save(
-                SubjectMapper.INSTANCE.toEntityJpa(subject)
+//                SubjectMapper.INSTANCE.toEntityJpa(subject)
+                subjectJpa
         ).getIdSubject();
     }
 

@@ -8,7 +8,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,4 +25,30 @@ public class Agreement {
     private List<EPlace> places;
     private List<Language> languages;
     private Rate rate;
+
+    public void addLanguage(Language language) {
+        if (Objects.isNull(this.languages)) {
+            this.languages = new ArrayList<>();
+        }
+        this.languages.add(language);
+    }
+    public void removeLanguage(Language language) {
+        if (Objects.isNull(this.languages)) {
+            this.languages = new ArrayList<>();
+        }
+        this.languages.remove(language);
+    }
+
+    public void addPlace(EPlace place) {
+        if (Objects.isNull(this.places)) {
+            this.places = new ArrayList<>();
+        }
+        this.places.add(place);
+    }
+    public void removePlace(EPlace place) {
+        if (Objects.isNull(this.places)) {
+            this.places = new ArrayList<>();
+        }
+        this.places.remove(place);
+    }
 }

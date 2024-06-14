@@ -25,11 +25,18 @@ public class AgreementJpa {
     @Column(name = "id_agreement")
     private Long idAgreement;
 
-    @Column(name = "title", nullable = false, length = 10)
+    @Column(name = "title", nullable = false)
+//    @Size(max = 100, message = "El título no puede tener más de 100 caracteres")
+//    @Size(min = 10, message = "El título debe tener un mínimo de 10 caracteres")
     private String title;
 
-    @Column(name = "description", nullable = false, length = 10)
-    @Size(max = 250, message = "El título no puede tener más de 20 caracteres")
+//    @Column(name = "description", nullable = false)
+//    @Size(max = 250, message = "El título no puede tener más de 250 caracteres")
+//    @Size(min = 10, message = "El título debe tener un mínimo de 10 caracteres")
+//    private String description;
+
+    @Column(name = "description", nullable = false, length = 250)
+    @Size(min = 10, max = 250, message = "La descripción debe tener entre 10 y 250 caracteres")
     private String description;
 
     @Column(name = "about_me")
