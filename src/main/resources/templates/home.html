@@ -5,6 +5,7 @@
 
     <th:block th:fragment="fragment_css">
         <link rel="stylesheet" th:href="@{/css/home.css}">
+        <link rel="stylesheet" th:href="@{/css/my_home.css}">
 
         <!-- User drop down -->
         <link rel="stylesheet" th:href="@{/css/template/userDropDown.css}">
@@ -55,7 +56,8 @@
                                                    style="--n-subjects: 3;">
 <span class="subjects">
 <span class="specific">Maths</span>
-<span class="default">¿Qué quieres aprender?</span>
+<!--<span class="default">¿Qué quieres aprender?</span>-->
+<input type="text" id="inputSearchSubject" placeholder="¿Qué quieres aprender?">
 
 <span class="random"></span>
 </span>
@@ -107,8 +109,9 @@
                                                 </div>
                                             </div>
                                             <div class="btn-container">
-                                                <button class="btn HomeV2_searchButton search-header-submit button-topHide"
-                                                        type="submit"><span class="text">Buscar</span></button>
+                                                <button id="btnSearchSubject" class="btn HomeV2_searchButton search-header-submit button-topHide">
+                                                    <span class="text">Buscar</span>
+                                                </button>
                                             </div>
                                         </div>
                                         <input type="hidden" name="search_all" value=""><input type="hidden"
@@ -141,7 +144,7 @@
                                             <a class="list-item" href="/clases/ayuda-en-los-deberes/espana/">
                                                 <img class="icon" src="//c.superprof.com/img/ico/mat/default.svg"
                                                      alt="subject icon">
-                                                <span class="name">Ayuda con los deberes</span>
+                                                <span class="name">Desarrollo Web</span>
                                             </a></li>
                                         <li>
                                             <a class="list-item" href="/clases/guitarra/espana/">

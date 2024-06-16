@@ -59,5 +59,4 @@ public class PageController {
         model.addAttribute("agreements", agreementRepositoryJpa.findAll());
         return "test";
     }
-
 }

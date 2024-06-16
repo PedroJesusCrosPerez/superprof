@@ -1,6 +1,10 @@
 $(function () {
     console.log("home.js: Javascript works!!!")
 
+    $('#btnSearchSubject').on('click', function () {
+
+        seachSubjectByName($('#inputSearchSubject').val())
+    })
 
     let modal = $('#connect-modal div.common-modal')
     let modalHideContent = $('#connect-modal div.connect')
@@ -57,6 +61,7 @@ $(function () {
     }
 })
 
-//$({
-//    console.log("home.js: Javascript with JQuery works!!!")
-//})
+function seachSubjectByName(name) {
+
+    window.location.href = `/subjects/search?name=${name}`
+}
