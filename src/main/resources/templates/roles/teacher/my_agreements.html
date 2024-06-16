@@ -18,21 +18,17 @@
     <meta name="theme-color" content="#ffffff">
 
 
-
     <title>Panel de control - Superprof</title>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<!--    <th:block th:fragment="fragment_css">-->
-<!--&lt;!&ndash;        <link rel="stylesheet" th:href="@{/css/template/teacher_dashboard.css}">&ndash;&gt;-->
-<!--    </th:block>-->
+    <!--    <th:block th:fragment="fragment_css">-->
+    <!--&lt;!&ndash;        <link rel="stylesheet" th:href="@{/css/template/teacher_dashboard.css}">&ndash;&gt;-->
+    <!--    </th:block>-->
 
-<!--    <th:block th:fragment="fragment_js">-->
-<!--        <script th:src="@{/js/template/teacher_dashboard.js}"></script>-->
-<!--        &lt;!&ndash;        <script th:src="@{/js/template/teacher_dashboard.js}"></script>&ndash;&gt;-->
-<!--    </th:block>-->
-
-
-
+    <!--    <th:block th:fragment="fragment_js">-->
+    <!--        <script th:src="@{/js/template/teacher_dashboard.js}"></script>-->
+    <!--        &lt;!&ndash;        <script th:src="@{/js/template/teacher_dashboard.js}"></script>&ndash;&gt;-->
+    <!--    </th:block>-->
 
 
     <style>body:before, body:after {
@@ -1955,33 +1951,35 @@
                 </div>
                 <div id="search-engine-0" class="header-search-engine empty-step">
                     <div class="overlay" style="display: none;"></div>
-                    <div class="container"><!----><span class="main-text caption">¿Qué quieres aprender?</span>
+                    <div class="container">
+                        <input type="text" id="searchSubject" placeholder="¿Qué quieres aprender?">
+                        <!--<span class="main-text caption">¿Qué quieres aprender?</span>-->
                         <div class="fields">
                             <div class="input-wrapper">
-                                <div class="field-wrapper"><!----><i data-v-07452373="" data-name="book"
-                                                                     data-tags="read,dictionary,booklet,magazine,library"
-                                                                     data-type="book" class="feather feather--book">
-                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                         stroke-linecap="round" stroke-linejoin="round"
-                                         class="feather feather-book feather__content">
-                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
-                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
-                                    </svg>
-                                </i><input data-proxy="subject.input" data-proxy-field="subject"
+                                <div class="field-wrapper">
+                                    <i data-v-07452373="" data-name="book" data-tags="read,dictionary,booklet,magazine,library" data-type="book" class="feather feather--book">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-book feather__content">
+                                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                                        </svg>
+                                    </i>
+                                    <input data-proxy="subject.input" data-proxy-field="subject"
                                            data-local-target="inputs.subject" data-field-index="SUBJECT"
                                            name="subject-field" type="text" class="caption" placeholder="¿Qué materia?">
-                                    <div class="clear-button"><i data-v-07452373="" data-name="x"
-                                                                 data-tags="cancel,close,delete,remove,times,clear"
-                                                                 data-type="x" class="feather feather--x">
-                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-x feather__content">
-                                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                                        </svg>
-                                    </i></div>
+                                    <div class="clear-button">
+                                        <i data-v-07452373="" data-name="x" data-tags="cancel,close,delete,remove,times,clear" data-type="x" class="feather feather--x">
+                                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-x feather__content">
+                                                <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                <line x1="6" y1="6" x2="18" y2="18"></line>
+                                            </svg>
+                                        </i>
+                                    </div>
                                 </div>
                                 <span class="dropdown-title">Top materias</span>
                                 <ul data-v-7bc63f14="" class="header-dropdown" style="display: none;">
@@ -2407,15 +2405,16 @@
         <div data-v-40628fde="" class="ad-update-page">
             <div data-v-40628fde="" class="page-wrapper">
                 <aside data-v-40628fde="">
-                    <div data-v-5ab58b40="" data-v-40628fde="" class="list-ad-wrapper"><!---->
+                    <div id="agreementsList" data-v-5ab58b40="" data-v-40628fde="" class="list-ad-wrapper"><!---->
                         <div data-v-bdf91106="" data-v-5ab58b40="" class="tooltip-wrapper">
-                            <button id="createAgreement" data-v-5ab58b40="" data-v-bdf91106="" class="btn-add-ad"><i data-v-07452373=""
-                                                                                                data-v-5ab58b40=""
-                                                                                                data-name="plus-circle"
-                                                                                                data-tags="add,new"
-                                                                                                data-type="plus-circle"
-                                                                                                class="icon feather feather--plus-circle"
-                                                                                                data-v-bdf91106="">
+                            <button id="createAgreement" data-v-5ab58b40="" data-v-bdf91106="" class="btn-add-ad"><i
+                                    data-v-07452373=""
+                                    data-v-5ab58b40=""
+                                    data-name="plus-circle"
+                                    data-tags="add,new"
+                                    data-type="plus-circle"
+                                    class="icon feather feather--plus-circle"
+                                    data-v-bdf91106="">
                                 <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                      viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                      stroke-linecap="round" stroke-linejoin="round"
@@ -2489,64 +2488,148 @@
                                                                                           stroke="url(#grad2)"></polyline></svg></span>
                                         </div>
                                     </div>
-                                    <a data-v-cc12f020="" target="_blank" class="button-wrapper"><p data-v-cc12f020=""
-                                                                                                    data-label="ad_u_stats_pass_premium">
-                                        Pasar a Premium</p></a></div><!----></div><!---->
-                            <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                   data-label="ad_u_update_details_page_subjects">
-                                Clases impartidas</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                                         data-tags="pencil,change" data-type="edit-2"
-                                                         class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i></div>
-                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container subjects-wrapper">
-                                    <div data-v-fbd665cc="" data-v-6e56b942="" class="subjects"><p data-v-fbd665cc=""
-                                                                                                   data-v-6e56b942="">
-                                        Java programación</p></div>
+                                    <a data-v-cc12f020="" target="_blank" class="button-wrapper">
+                                        <p data-v-cc12f020="" data-label="ad_u_stats_pass_premium">Pasar a Premium</p>
+                                    </a></div><!----></div>
+                            <div data-v-fbd665cc="" class="level-languages-wrapper">
+                                <div data-v-fbd665cc="">
+                                    <div data-v-fbd665cc="" class="title-part-wrapper">
+                                        <h2 data-v-fbd665cc="" data-label="ad_u_language_title">
+                                            Clases impartidas</h2>
+                                        <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                           data-tags="pencil,change" data-type="edit-2"
+                                           class="icon-edit feather feather--edit-2">
+                                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-edit-2 feather__content">
+                                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                            </svg>
+                                        </i>
+                                    </div>
+                                    <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
+                                        <div style="display: flex; align-items: center" data-v-fbd665cc=""
+                                             data-v-6e56b942="" class="infos-container subjects-wrapper">
+                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="subjects">
+                                                <p name="subjectsNames" data-v-fbd665cc="" data-v-6e56b942="">Java
+                                                    programación</p>
+                                            </div>
+                                            <div style="visibility: hidden;" data-v-fbd665cc="" data-v-6e56b942=""
+                                                 class="text-wrapper">
+                                                <i data-v-07452373="" data-v-fbd665cc="" data-name="flag"
+                                                   data-tags="report" data-type="flag"
+                                                   class="icon feather feather--flag" data-v-6e56b942="">
+                                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg"
+                                                         width="24"
+                                                         height="24" viewBox="0 0 24 24" fill="none"
+                                                         stroke="currentColor"
+                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                         class="feather feather-flag feather__content">
+                                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                                                    </svg>
+                                                </i>
+                                                <p name="languages" data-v-fbd665cc="" data-v-6e56b942=""
+                                                   class="first-item">Español</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-v-fbd665cc="">
+                                    <div data-v-fbd665cc="" class="title-part-wrapper">
+                                        <h2 data-v-fbd665cc="" data-label="ad_u_language_title">
+                                            Idiomas y países</h2>
+                                        <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                           data-tags="pencil,change" data-type="edit-2"
+                                           class="icon-edit feather feather--edit-2">
+                                            <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                 height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                 class="feather feather-edit-2 feather__content">
+                                                <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                            </svg>
+                                        </i>
+                                    </div>
+                                    <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
+                                        <div name="languagesList" data-v-fbd665cc="" data-v-6e56b942=""
+                                             class="infos-container">
+                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="text-wrapper">
+                                                <i data-v-07452373="" data-v-fbd665cc="" data-name="flag"
+                                                   data-tags="report" data-type="flag"
+                                                   class="icon feather feather--flag" data-v-6e56b942="">
+                                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg"
+                                                         width="24"
+                                                         height="24" viewBox="0 0 24 24" fill="none"
+                                                         stroke="currentColor"
+                                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                         class="feather feather-flag feather__content">
+                                                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                                                        <line x1="4" y1="22" x2="4" y2="15"></line>
+                                                    </svg>
+                                                </i>
+                                                <p name="languages" data-v-fbd665cc="" data-v-6e56b942=""
+                                                   class="first-item">Español</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                   data-label="ad_u_update_details_page_subtitle_ad">
-                                Título del anuncio</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                                          data-tags="pencil,change" data-type="edit-2"
-                                                          class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i></div>
-                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="title-ad-wrapper infos-container"><h3
-                                        data-v-fbd665cc="" data-v-6e56b942="" class="title-ad-edit">Titulo de prueba a a
-                                    a a a aa a a a a</h3></div>
+                            <div data-v-fbd665cc="" class="title-part-wrapper">
+                                <h2 data-v-fbd665cc="" data-label="ad_u_update_details_page_subtitle_ad">Título del
+                                    anuncio</h2>
+                                <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2" data-tags="pencil,change"
+                                   data-type="edit-2" class="icon-edit feather feather--edit-2">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-edit-2 feather__content">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                    </svg>
+                                </i>
                             </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                   data-label="ad_u_update_details_page_location">
-                                Lugar</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                             data-tags="pencil,change" data-type="edit-2"
-                                             class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i></div>
                             <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container all-places-wrapper">
-                                    <!---->
-                                    <div data-v-fbd665cc="" data-v-6e56b942="" class="text-wrapper"><i
-                                            data-v-07452373="" data-v-fbd665cc="" data-name="video"
-                                            data-tags="camera,movie,film" data-type="video"
-                                            class="icon feather feather--video" data-v-6e56b942="">
+                                <div data-v-fbd665cc="" data-v-6e56b942="" class="title-ad-wrapper infos-container">
+                                    <h3 name="title" data-v-fbd665cc="" data-v-6e56b942="" class="title-ad-edit">Titulo
+                                        de prueba a a a a a aa a a a a</h3>
+                                </div>
+                            </div>
+                            <div data-v-fbd665cc="" class="title-part-wrapper">
+                                <h2 data-v-fbd665cc="" data-label="ad_u_update_details_page_location">Lugar</h2>
+                                <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                   data-tags="pencil,change" data-type="edit-2"
+                                   class="icon-edit feather feather--edit-2">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-edit-2 feather__content">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                    </svg>
+                                </i>
+                            </div>
+                            <div id="placesList" data-v-fbd665cc="" data-v-6e56b942="" class="infos-container all-places-wrapper">
+                                <!---->
+                                <div class="disabled text-wrapper" name="place_in_person" data-v-fbd665cc=""
+                                     data-v-6e56b942="">
+                                    <i data-v-07452373="" data-v-fbd665cc="" data-name="map-pin"
+                                       data-tags="location,navigation,travel,marker" data-type="map-pin"
+                                       class="icon feather feather--map-pin" data-v-6e56b942="">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-map-pin feather__content">
+                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                            <circle cx="12" cy="10" r="3"></circle>
+                                        </svg>
+                                    </i>
+                                    <p data-v-fbd665cc="" data-v-6e56b942=""
+                                       data-label="ad_u_update_details_page_your_place" vars="[object Object]">
+                                        En Persona</p>
+                                </div>
+                                <div class="disabled text-wrapper" name="place_online" data-v-fbd665cc=""
+                                     data-v-6e56b942="">
+                                    <i data-v-07452373="" data-v-fbd665cc="" data-name="video"
+                                       data-tags="camera,movie,film" data-type="video"
+                                       class="icon feather feather--video" data-v-6e56b942="">
                                         <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
                                              height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                              stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -2555,263 +2638,228 @@
                                             <rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect>
                                         </svg>
                                     </i>
-                                        <p data-v-fbd665cc="" data-v-6e56b942=""
-                                           data-label="ad_u_update_details_page_webcam">Webcam</p></div><!----></div>
-                            </div>
-                            <div data-v-fbd665cc="" class="level-languages-wrapper">
-                                <div data-v-fbd665cc="">
-                                    <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                           data-label="ad_u_update_details_page_levels">
-                                        Niveles</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                                       data-tags="pencil,change" data-type="edit-2"
-                                                       class="icon-edit feather feather--edit-2">
-                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-edit-2 feather__content">
-                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                        </svg>
-                                    </i></div>
-                                    <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                        <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container">
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="text-wrapper"><i
-                                                    data-v-07452373="" data-v-fbd665cc="" data-name="target"
-                                                    data-tags="logo,bullseye" data-type="target"
-                                                    class="icon feather feather--target" data-v-6e56b942="">
-                                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                     class="feather feather-target feather__content">
-                                                    <circle cx="12" cy="12" r="10"></circle>
-                                                    <circle cx="12" cy="12" r="6"></circle>
-                                                    <circle cx="12" cy="12" r="2"></circle>
-                                                </svg>
-                                            </i>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" class="first-item"
-                                                   data-label="ad_u_update_details_page_all_levels">Todos los
-                                                    niveles</p></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div data-v-fbd665cc="">
-                                    <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                           data-label="ad_u_language_title">
-                                        Idiomas y países</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                                                data-tags="pencil,change" data-type="edit-2"
-                                                                class="icon-edit feather feather--edit-2">
-                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-edit-2 feather__content">
-                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                        </svg>
-                                    </i></div>
-                                    <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                        <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container">
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="text-wrapper"><i
-                                                    data-v-07452373="" data-v-fbd665cc="" data-name="flag"
-                                                    data-tags="report" data-type="flag"
-                                                    class="icon feather feather--flag" data-v-6e56b942="">
-                                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                     class="feather feather-flag feather__content">
-                                                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-                                                    <line x1="4" y1="22" x2="4" y2="15"></line>
-                                                </svg>
-                                            </i>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" class="first-item">Español</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <p data-v-fbd665cc="" data-v-6e56b942=""
+                                       data-label="ad_u_update_details_page_webcam">Videollamada</p>
                                 </div>
                             </div>
                             <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
                                 <div data-v-fbd665cc="" data-v-6e56b942="" class="title-part-wrapper"><h2
                                         data-v-fbd665cc="" data-v-6e56b942=""
-                                        data-label="ad_u_update_details_page_about_teaching">Acerca de la clase</h2><i
-                                        data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                        data-tags="pencil,change" data-type="edit-2"
-                                        class="icon-edit feather feather--edit-2" data-v-6e56b942="">
-                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        data-label="ad_u_update_details_page_about_teaching">Acerca de la clase</h2>
+                                    <i
+                                            data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                            data-tags="pencil,change" data-type="edit-2"
+                                            class="icon-edit feather feather--edit-2" data-v-6e56b942="">
+                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                             height="24"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                             stroke-linecap="round" stroke-linejoin="round"
+                                             class="feather feather-edit-2 feather__content">
+                                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                        </svg>
+                                    </i></div>
+                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container">
+                                    <p name="description" data-v-fbd665cc="" data-v-6e56b942="" class="pre-line">
+                                        a a a a d dasbfd fda das ds as a a aaa a a a d d d da da dfa fad fads fads
+                                        fads fads
+                                        fads fads fadaf df f dsf adaf d afds fad fad adfs afds afds dafs</p>
+                                </div>
+                            </div>
+                            <div data-v-fbd665cc="" class="title-part-wrapper">
+                                <h2 data-v-fbd665cc="" data-label="ad_u_update_details_page_about_you">
+                                    Sobre mi
+                                </h2>
+                                <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                   data-tags="pencil,change" data-type="edit-2"
+                                   class="icon-edit feather feather--edit-2">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24"
+                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                         stroke-linecap="round" stroke-linejoin="round"
+                                         class="feather feather-edit-2 feather__content">
+                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                                    </svg>
+                                </i>
+                            </div>
+                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
+                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container">
+                                    <p name="aboutMe" data-v-fbd665cc="" data-v-6e56b942="" class="pre-line">
+                                        as asf dasf df ads asdf ss fd fsda dasffdfasd s aa a a a a a dd d d d d d as
+                                        asf
+                                        dasf df ads asdf ss fd fsda dasffdfasd s aa a a a a a dd d d d d d
+                                    </p>
+                                </div>
+                            </div>
+                            <div data-v-fbd665cc="" class="title-part-wrapper">
+                                <h2 data-v-fbd665cc="" data-label="ad_u_update_details_page_prices">Tarifas</h2>
+                                <i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
+                                   data-tags="pencil,change" data-type="edit-2"
+                                   class="icon-edit feather feather--edit-2">
+                                    <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                         height="24"
                                          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                          stroke-linecap="round" stroke-linejoin="round"
                                          class="feather feather-edit-2 feather__content">
                                         <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                                     </svg>
                                 </i></div>
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container"><p data-v-fbd665cc=""
-                                                                                                      data-v-6e56b942=""
-                                                                                                      class="pre-line">a
-                                    a a a d dasbfd fda das ds as a a aaa a a a d d d da da dfa fad fads fads fads fads
-                                    fads fads fadaf df f dsf adaf d afds fad fad adfs afds afds dafs</p></div>
-                            </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                   data-label="ad_u_update_details_page_about_you">
-                                Sobre mi</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                                data-tags="pencil,change" data-type="edit-2"
-                                                class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i></div>
-                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container"><p data-v-fbd665cc=""
-                                                                                                      data-v-6e56b942=""
-                                                                                                      class="pre-line">
-                                    as asf dasf df ads asdf ss fd fsda dasffdfasd s aa a a a a a dd d d d d d as asf
-                                    dasf df ads asdf ss fd fsda dasffdfasd s aa a a a a a dd d d d d d</p></div>
-                            </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper"><h2 data-v-fbd665cc=""
-                                                                                   data-label="ad_u_update_details_page_prices">
-                                Tarifas</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                               data-tags="pencil,change" data-type="edit-2"
-                                               class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i></div>
                             <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
                                 <div data-v-fbd665cc="" data-v-6e56b942="" class="">
                                     <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container prices">
                                         <div data-v-fbd665cc="" data-v-6e56b942="" class="details">
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details"><p
-                                                    data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                                    data-label="ad_u_profile_hourly_price">Tarifa horaria</p>
+                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details">
+                                                <p data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
+                                                   data-label="ad_u_profile_hourly_price">Tarifa horaria</p>
                                                 <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]"
-                                                   data-label="ad_u_update_details_page_1H">1h : 11€</p></div>
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details"><p
-                                                    data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                                    data-label="ad_u_update_details_page_packs">Packs</p>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]"
-                                                   data-label="ad_u_update_details_page_pack_5H">5h: 55 €</p>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]"
-                                                   data-label="ad_u_update_details_page_pack_10H">10h: 110 €</p></div>
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details"><p
-                                                    data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                                    data-label="ad_u_update_details_page_webcam">Webcam</p>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]"
-                                                   data-label="ad_u_update_details_page_webcam_price">0 € / h</p></div>
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details"><p
-                                                    data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                                    data-label="ad_u_update_details_page_travel">Desplazamiento</p>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]"
-                                                   data-label="ad_u_update_details_page_travel_price">+ 0 €</p></div>
-                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details last"><p
-                                                    data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                                    data-label="ad_u_update_details_page_free_lesson">Clase gratis</p>
-                                                <p data-v-fbd665cc="" data-v-6e56b942="">1h</p></div>
+                                                   data-label="ad_u_update_details_page_1H">
+                                                    1h : <span name="pricePerHour">11€</span>
+                                                </p>
+                                            </div>
+                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details">
+                                                <p data-v-fbd665cc="" data-v-6e56b942="" class="subtitle" data-label="ad_u_update_details_page_packs"
+                                                    >Packs</p>
+                                                <div id="listPacks">
+                                                    <!--
+                                                    <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]" data-label="ad_u_update_details_page_pack_5H"
+                                                    >5h: 55 €</p>
+                                                    <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]" data-label="ad_u_update_details_page_pack_10H"
+                                                    >10h: 110 €</p>
+                                                    -->
+                                                    <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]" data-label="ad_u_update_details_page_pack_10H">5h: 55 €</p>
+                                                    <p data-v-fbd665cc="" data-v-6e56b942="" vars="[object Object]" data-label="ad_u_update_details_page_pack_10H">5h: 55 €</p>
+                                                    <p data-v-fbd665cc="">5h: 55 €</p>
+                                                    <p>5h: 55 €</p>
+                                                    <p>5h: 55 €</p>
+                                                    <p>5h: 55 €</p>
+                                                </div>
+                                            </div>
+                                            <!--
+                                            <div data-v-fbd665cc="" data-v-6e56b942="" class="part-details last">
+                                                <p data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
+                                                    data-label="ad_u_update_details_page_free_lesson"
+                                                >Clase gratis</p>
+                                                <p data-v-fbd665cc="" data-v-6e56b942="">1h</p>
+                                            </div>
+                                            -->
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container precisions"><p
-                                        data-v-fbd665cc="" data-v-6e56b942="" class="subtitle"
-                                        data-label="ad_u_update_details_page_precisions">Precisiones</p>
-                                    <p data-v-fbd665cc="" data-v-6e56b942=""
-                                       data-label="ad_u_update_details_page_no_precision">Puedes escribir algo para
-                                        indicar más información sobre tus tarifas</p></div>
-                            </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper video"><h2 data-v-fbd665cc=""
-                                                                                         data-label="ad_u_update_details_page_video">
-                                Vídeo</h2><i data-v-07452373="" data-v-fbd665cc="" data-name="edit-2"
-                                             data-tags="pencil,change" data-type="edit-2"
-                                             class="icon-edit feather feather--edit-2">
-                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                     stroke-linecap="round" stroke-linejoin="round"
-                                     class="feather feather-edit-2 feather__content">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
-                                </svg>
-                            </i>
-                                <h3 data-v-fbd665cc="" class="video-subtitle"
-                                    data-label="ad_u_update_details_page_video_subtitle">Inserta un enlace a un vídeo de
-                                    Youtube para que aparezca en tu anuncio.</h3></div>
-                            <div data-v-6e56b942="" data-v-fbd665cc="" class="edit-wrapper">
-                                <div data-v-fbd665cc="" data-v-6e56b942="" class="infos-container video-wrapper"><p
-                                        data-v-fbd665cc="" data-v-6e56b942="" data-label="ad_u_modal_no_video_default">
-                                    Por el momento no hay vídeo</p><!----></div>
-                            </div>
-                            <div data-v-fbd665cc="" class="title-part-wrapper reco-wrapper"><h2 data-v-fbd665cc=""
-                                                                                                data-label="ad_u_update_details_page_references">
-                                Recomendaciones</h2>
+
+                            <!--
+                            <div data-v-fbd665cc="" class="title-part-wrapper reco-wrapper">
+                                <h2 data-v-fbd665cc=""
+                                    data-label="ad_u_update_details_page_references">
+                                    Recomendaciones</h2>
                                 <p data-v-fbd665cc="" class="description"
-                                   data-label="ad_u_update_details_page_ask_references">Solicita recomendaciones a tus
-                                    allegados para mejorar tu perfil ¡y obtener así una mejor posición en los resultados
+                                   data-label="ad_u_update_details_page_ask_references">Solicita recomendaciones a
+                                    tus
+                                    allegados para mejorar tu perfil ¡y obtener así una mejor posición en los
+                                    resultados
                                     de búsqueda!</p></div>
                             <div data-v-fbd665cc="" class="infos-container">
-                                <div data-v-e4077380="" data-v-fbd665cc="" class="buttons-share-wrapper">
-                                    <div data-v-e4077380="" target="_blank" class="social-network-container copy"><span
+                                    <div data-v-e4077380="" data-v-fbd665cc="" class="buttons-share-wrapper">
+                                        <div data-v-e4077380="" target="_blank" class="social-network-container copy">
+                                             <span data-v-e4077380="" class="chip">
+                                                    <i data-v-07452373="" data-v-e4077380="" data-name="copy" data-tags="clone,duplicate" data-type="copy" class="icon icon-copy feather feather--copy">
+                                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-copy feather__content">
+                                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                                        </svg>
+                                                    </i>
+                                                </span>
+                                            <p data-v-e4077380="" data-label="ad_u_update_details_page_copy_link">O copia este link:</p>
+                                        </div>
+                                        <a data-v-e4077380=""
+                                           href="https://www.facebook.com/dialog/send?app_id=541897999191679&amp;link=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052&amp;redirect_uri=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052"
+                                           target="_blank" class="social-network-container messenger"><span
+                                                data-v-e4077380="" class="chip"><span data-v-e4077380=""
+                                                                                      class="o-messenger-1 icon icon-messenger"></span></span>
+                                            <p data-v-e4077380="" data-label="ad_u_share_messenger">Messenger</p></a><a
+                                            data-v-e4077380=""
+                                            href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052&amp;title="
+                                            target="_blank" class="social-network-container linkedin"><span
                                             data-v-e4077380="" class="chip"><i data-v-07452373="" data-v-e4077380=""
-                                                                               data-name="copy"
-                                                                               data-tags="clone,duplicate"
-                                                                               data-type="copy"
-                                                                               class="icon icon-copy feather feather--copy"><svg
+                                                                               data-name="linkedin"
+                                                                               data-tags="logo,social media"
+                                                                               data-type="linkedin"
+                                                                               class="icon icon-linkedin feather feather--linkedin"><svg
                                             data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-copy feather__content"><rect x="9" y="9" width="13"
-                                                                                                height="13" rx="2"
-                                                                                                ry="2"></rect><path
-                                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg></i></span>
-                                        <p data-v-e4077380="" data-label="ad_u_update_details_page_copy_link">O copia
-                                            este link:</p><!----></div>
-                                    <a data-v-e4077380=""
-                                       href="https://www.facebook.com/dialog/send?app_id=541897999191679&amp;link=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052&amp;redirect_uri=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052"
-                                       target="_blank" class="social-network-container messenger"><span
-                                            data-v-e4077380="" class="chip"><span data-v-e4077380=""
-                                                                                  class="o-messenger-1 icon icon-messenger"></span></span>
-                                        <p data-v-e4077380="" data-label="ad_u_share_messenger">Messenger</p></a><a
-                                        data-v-e4077380=""
-                                        href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052&amp;title="
-                                        target="_blank" class="social-network-container linkedin"><span
-                                        data-v-e4077380="" class="chip"><i data-v-07452373="" data-v-e4077380=""
-                                                                           data-name="linkedin"
-                                                                           data-tags="logo,social media"
-                                                                           data-type="linkedin"
-                                                                           class="icon icon-linkedin feather feather--linkedin"><svg
-                                        data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-linkedin feather__content"><path
-                                        d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect
-                                        x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4"
-                                                                                         r="2"></circle></svg></i></span>
-                                    <p data-v-e4077380="" data-label="ad_u_share_linkedin">Linkedin</p></a><a
-                                        data-v-e4077380=""
-                                        href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052"
-                                        target="_blank" class="social-network-container facebook"><span
-                                        data-v-e4077380="" class="chip"><i data-v-07452373="" data-v-e4077380=""
-                                                                           data-name="facebook" data-tags="logo,social"
-                                                                           data-type="facebook"
-                                                                           class="icon icon-facebook feather feather--facebook"><svg
-                                        data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round" stroke-linejoin="round"
-                                        class="feather feather-facebook feather__content"><path
-                                        d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></i></span>
-                                    <p data-v-e4077380="" data-label="ad_u_share_facebook">Facebook</p></a><!---->
-                                    <div data-v-e4077380="" class="social-network-container mail"><span
+                                            class="feather feather-linkedin feather__content"><path
+                                            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect
+                                            x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4"
+                                                                                             r="2"></circle></svg></i></span>
+                                        <p data-v-e4077380="" data-label="ad_u_share_linkedin">Linkedin</p></a><a
+                                            data-v-e4077380=""
+                                            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.superprof.es%2Fir%2F30308655-1a1052"
+                                            target="_blank" class="social-network-container facebook"><span
                                             data-v-e4077380="" class="chip"><i data-v-07452373="" data-v-e4077380=""
-                                                                               data-name="mail"
-                                                                               data-tags="email,message"
-                                                                               data-type="mail"
-                                                                               class="icon icon-mail feather feather--mail"><svg
+                                                                               data-name="facebook"
+                                                                               data-tags="logo,social"
+                                                                               data-type="facebook"
+                                                                               class="icon icon-facebook feather feather--facebook"><svg
                                             data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" stroke-linejoin="round"
-                                            class="feather feather-mail feather__content"><path
-                                            d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline
-                                            points="22,6 12,13 2,6"></polyline></svg></i></span>
-                                        <p data-v-e4077380="" data-label="ad_u_share_mail">Mail</p></div><!----></div>
+                                            class="feather feather-facebook feather__content"><path
+                                            d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></i></span>
+                                        <p data-v-e4077380="" data-label="ad_u_share_facebook">Facebook</p></a>
+                                        <div data-v-e4077380="" class="social-network-container mail"><span
+                                                data-v-e4077380="" class="chip">
+                                            <i data-v-07452373="" data-v-e4077380=""
+                                                                                   data-name="mail"
+                                                                                   data-tags="email,message"
+                                                                                   data-type="mail"
+                                                                                   class="icon icon-mail feather feather--mail"><svg
+                                                data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="feather feather-mail feather__content"><path
+                                                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline
+                                                points="22,6 12,13 2,6"></polyline></svg></i></span>
+                                            <p data-v-e4077380="" data-label="ad_u_share_mail">Mail</p></div>
+                                    </div>
+                                </div>
+                            <div data-v-5908439c="" data-v-fbd665cc="" class="curtain" style="display: none;">
+                                <div data-v-5908439c="" class="modal">
+                                    <div data-v-5908439c="" class="step">
+                                        <button data-v-5908439c="" class="close-modal">
+                                            <i data-v-07452373=""
+                                                                                          data-v-5908439c=""
+                                                                                          data-name="x"
+                                                                                          data-tags="cancel,close,delete,remove,times,clear"
+                                                                                          data-type="x"
+                                                                                          class="feather feather--x">
+                                                <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
+                                                     height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                     class="feather feather-x feather__content">
+                                                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                                                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                                                </svg>
+                                            </i>
+                                        </button>
+                                    </div>
+                                    <div data-v-5908439c="" class="confirm" style="display: none;">
+                                        <div data-v-5908439c="" class="content">
+                                            <p data-v-5908439c="" data-label="ad_u_update_modal_confirm">
+                                            ¿Estás seguro de querer salir sin guardar?<br><br>
+                                            Tus cambios se perderán.</p>
+                                            <div data-v-5908439c="" class="buttons-container">
+                                                <button data-v-5908439c="" data-label="ad_u_update_modal_confirm_no"
+                                                >No</button>
+                                                <span data-v-5908439c="" class="separator"></span>
+                                                <button data-v-5908439c="" data-label="ad_u_update_modal_confirm_yes"
+                                                >Sí</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            -->
                         </div>
                         <div data-v-fbd665cc="" class="right-part" style="visibility: visible;"><!----><!---->
                             <div data-v-ef7a073e="" data-v-fbd665cc="" class="profile-card-wrapper disable">
@@ -2824,7 +2872,7 @@
                                 <div data-v-ef7a073e="" class="avatar-preview-wrapper">
                                     <div data-v-1620da0e="" data-v-ef7a073e="" class="avatar-wrapper disable"><img
                                             data-v-1620da0e=""
-                                            src="https://c.superprof.com/i/a/30308655/13803574/300/20240313080839/titulo-prueba.jpg"
+                                            src="https://c.superprof.com/i/a/30308655/13374456/300/20240313080839/descripcion-asdfasdfasfdsadf-asdfasdf-sadf-fds-sfd.jpg"
                                             alt="profile picture" class="avatar"><span data-v-1620da0e=""
                                                                                        class="curtain-photo"></span><span
                                             data-v-1620da0e="" class="icon-camera-wrapper"><i data-v-07452373=""
@@ -2859,7 +2907,7 @@
                                              background-color="grey"><h6 data-v-ef7a073e="" data-v-6e56b942=""
                                                                          vars="[object Object]"
                                                                          class="details-value background-wrapper"
-                                                                         data-label="ad_u_profile_price_hourly_price">11<small>€</small>
+                                                                         data-label="ad_u_profile_price_hourly_price">12<small>€</small>
                                         </h6></div>
                                     </div>
                                 </div>
@@ -2870,11 +2918,11 @@
                                     Anuncio suspendido</p>
                                     <div data-v-60ce8fb5="" data-v-36d9ee44=""><input data-v-60ce8fb5=""
                                                                                       disabled="disabled"
-                                                                                      type="checkbox" id="308"><label
-                                            data-v-60ce8fb5="" class="green" for="308"></label></div>
+                                                                                      type="checkbox" id="195"><label
+                                            data-v-60ce8fb5="" class="green" for="195"></label></div>
                                 </div>
                                 <div data-v-36d9ee44="" class="btn-default-wrapper"><a data-v-36d9ee44=""
-                                                                                       href="https://www.superprof.es/titulo-prueba.html"
+                                                                                       href="https://www.superprof.es/descripcion-asdfasdfasfdsadf-asdfasdf-sadf-fds-sfd.html"
                                                                                        target="_blank"
                                                                                        class="button"><span
                                         data-v-36d9ee44="" data-label="ad_u_see_as_student">Vista como estudiante</span><i
@@ -2889,39 +2937,8 @@
                                     </svg>
                                 </i></a></div>
                             </div>
-                        </div><!----><!----><!----><!---->
-                        <div data-v-5908439c="" data-v-fbd665cc="" class="curtain" style="display: none;">
-                            <div data-v-5908439c="" class="modal">
-                                <div data-v-5908439c="" class="step">
-                                    <button data-v-5908439c="" class="close-modal"><i data-v-07452373=""
-                                                                                      data-v-5908439c="" data-name="x"
-                                                                                      data-tags="cancel,close,delete,remove,times,clear"
-                                                                                      data-type="x"
-                                                                                      class="feather feather--x">
-                                        <svg data-v-07452373="" xmlns="http://www.w3.org/2000/svg" width="24"
-                                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                             class="feather feather-x feather__content">
-                                            <line x1="18" y1="6" x2="6" y2="18"></line>
-                                            <line x1="6" y1="6" x2="18" y2="18"></line>
-                                        </svg>
-                                    </i></button><!----></div>
-                                <div data-v-5908439c="" class="confirm" style="display: none;">
-                                    <div data-v-5908439c="" class="content"><p data-v-5908439c=""
-                                                                               data-label="ad_u_update_modal_confirm">
-                                        ¿Estás seguro de querer salir sin guardar?<br><br>
-                                        Tus cambios se perderán.</p>
-                                        <div data-v-5908439c="" class="buttons-container">
-                                            <button data-v-5908439c="" data-label="ad_u_update_modal_confirm_no">No
-                                            </button>
-                                            <span data-v-5908439c="" class="separator"></span>
-                                            <button data-v-5908439c="" data-label="ad_u_update_modal_confirm_yes">Sí
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!----><!----></div>
+                        </div>
+                    </div>
                 </main>
             </div>
         </div>

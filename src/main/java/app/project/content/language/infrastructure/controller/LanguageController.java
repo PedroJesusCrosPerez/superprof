@@ -5,7 +5,7 @@ import app.project.content.language.application.mapper.LanguageMapper;
 import app.project.content.language.domain.entity.Language;
 import app.project.content.language.infrastructure.controller.dto.input.LanguageInputDto;
 import app.project.content.language.infrastructure.controller.dto.input.LanguageUpdateInputDto;
-import app.project.content.language.infrastructure.controller.dto.output.LanguageOutputDto;
+import app.project.content.language.infrastructure.controller.dto.output.LanguageOutputDtoFull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class LanguageController {
 
 
     @GetMapping("/{idLanguage}")
-    public ResponseEntity<LanguageOutputDto> findById(@PathVariable Long idLanguage) {
+    public ResponseEntity<LanguageOutputDtoFull> findById(@PathVariable Long idLanguage) {
 
         return  ResponseEntity
                 .status(
@@ -36,7 +36,7 @@ public class LanguageController {
     }
 
     @GetMapping
-    public ResponseEntity<List<LanguageOutputDto>> findAll() {
+    public ResponseEntity<List<LanguageOutputDtoFull>> findAll() {
 
         return  ResponseEntity
                 .status(

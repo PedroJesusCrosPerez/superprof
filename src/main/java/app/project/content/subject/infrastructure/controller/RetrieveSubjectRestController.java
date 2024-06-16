@@ -1,9 +1,8 @@
 package app.project.content.subject.infrastructure.controller;
 
-import app.project.content.subject.application.SubjectUseCase;
-import app.project.content.subject.application.mapper.SubjectMapper;
+import app.project.content.subject.application.RetrieveSubjectUsecase;
+import app.project.content.subject.application.mapper.SubjectDtoMapper;
 import app.project.content.subject.domain.entity.Subject;
-import app.project.content.subject.infrastructure.controller.dto.input.SubjectInputDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +13,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/subjects")
-public class SubjectController {
+public class RetrieveSubjectRestController {
 
-    private final SubjectUseCase subjectUseCase;
+    private final RetrieveSubjectUsecase retrieveSubjectUseCase;
 
 
     @GetMapping("/{idSubject}")
@@ -25,7 +24,7 @@ public class SubjectController {
             ,@RequestParam(value = "outerType", defaultValue = "simple") String outerType
     ) {
 
-        Subject subject = subjectUseCase.findByIdSubject(idSubject);
+        Subject subject = retrieveSubjectUseCase.findByIdSubject(idSubject);
 
         if ("full".equalsIgnoreCase(outerType)) {
 
@@ -34,7 +33,7 @@ public class SubjectController {
                             HttpStatus.ACCEPTED
                     )
                     .body(
-                            SubjectMapper.INSTANCE.toOutputDtoFull(
+                            SubjectDtoMapper.INSTANCE.toOutputDtoFull(
                                     subject
                             )
                     );
@@ -45,7 +44,7 @@ public class SubjectController {
                         HttpStatus.ACCEPTED
                 )
                 .body(
-                        SubjectMapper.INSTANCE.toOutputDto(
+                        SubjectDtoMapper.INSTANCE.toOutputDto(
                                 subject
                         )
                 );
@@ -56,7 +55,7 @@ public class SubjectController {
             @RequestParam(value = "outerType", defaultValue = "simple") String outerType
     ) {
 
-        List<Subject> subjectList = subjectUseCase.findAllSubjects();
+        List<Subject> subjectList = retrieveSubjectUseCase.findAllSubjects();
 
         if ("full".equalsIgnoreCase(outerType)) {
 
@@ -65,7 +64,7 @@ public class SubjectController {
                             HttpStatus.ACCEPTED
                     )
                     .body(
-                            SubjectMapper.INSTANCE.toOutputDtoFullList(
+                            SubjectDtoMapper.INSTANCE.toOutputDtoFullList(
                                     subjectList
                             )
                     );
@@ -76,29 +75,9 @@ public class SubjectController {
                         HttpStatus.ACCEPTED
                 )
                 .body(
-                        SubjectMapper.INSTANCE.toOutputDtoList(
+                        SubjectDtoMapper.INSTANCE.toOutputDtoList(
                                 subjectList
                         )
-                );
-    }
-
-    @PostMapping
-    public ResponseEntity<Long> saveSubject(
-            @RequestBody SubjectInputDto subjectInputDto
-    ) {
-
-        Long idSubject = subjectUseCase.saveSubject(
-                SubjectMapper.INSTANCE.toEntity(
-                        subjectInputDto
-                )
-        );
-
-        return  ResponseEntity
-                .status(
-                        HttpStatus.CREATED
-                )
-                .body(
-                        idSubject
                 );
     }
 }

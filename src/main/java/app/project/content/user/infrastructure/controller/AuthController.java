@@ -59,6 +59,13 @@ public class AuthController {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
+        System.out.println(roles);
+        System.out.println(roles);
+        System.out.println(roles);
+        System.out.println(roles);
+        System.out.println(roles);
+        System.out.println(roles);
+
         return  ResponseEntity
                 .status(
                         HttpStatus.ACCEPTED
@@ -120,7 +127,7 @@ public class AuthController {
                 )
                 .body(
 //                        newUser
-                        new MessageResponse("User registered successfully!" + newUser.toString())
+                        new MessageResponse("User registered successfully! " + newUser.getEmail())
                 );
     }
 

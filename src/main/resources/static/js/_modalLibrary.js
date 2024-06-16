@@ -6,8 +6,8 @@ function launchConfirmModal(onConfirm, onCancel) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí, ¡eliminar!'
+        confirmButtonText: 'Sí, ¡eliminar!',
+        cancelButtonColor: '#d33'
     }).then((result) => {
         if (result.isConfirmed) {
             onConfirm();
@@ -20,4 +20,12 @@ function launchConfirmModal(onConfirm, onCancel) {
             onCancel();
         }
     })
+}
+
+function launchSuccessModal(title, text) {
+    Swal.fire(title, text, 'success')
+}
+
+function launchErrorModal(title, text) {
+    Swal.fire(title, text, 'error')
 }

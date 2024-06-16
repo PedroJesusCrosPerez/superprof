@@ -1,10 +1,16 @@
 package app.project.content.rate.infrastructure.repository.impl;
 
+import app.project.content.pack.application.mapper.PackMapper;
+import app.project.content.pack.domain.entity.Pack;
+import app.project.content.pack.infrastructure.repository.jpa.PackRepositoryJpa;
+import app.project.content.pack.infrastructure.repository.jpa.entity.PackJpa;
 import app.project.content.rate.application.mapper.RateMapper;
 import app.project.content.rate.domain.entity.Rate;
 import app.project.content.rate.domain.repository.RateRepository;
 import app.project.content.rate.infrastructure.repository.jpa.RateRepositoryJpa;
+import app.project.content.rate.infrastructure.repository.jpa.entity.RateJpa;
 import app.project.shared.exceptions.NotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +21,7 @@ import java.util.List;
 public class RateRepositoryImpl implements RateRepository {
 
     private final RateRepositoryJpa rateRepositoryJpa;
+    private final PackRepositoryJpa packRepositoryJpa;
 
 
     @Override
@@ -43,18 +50,20 @@ public class RateRepositoryImpl implements RateRepository {
     }
 
     @Override
-    public Rate update(Rate rate) {
+    @Transactional
+    public Rate update(Rate rate, Pack pack) {
 
-        var rateJpa = rateRepositoryJpa.findById(rate.getIdRate())
-                .orElseThrow(
-                        () -> new NotFoundException(Rate.class, rate.getIdRate())
-                )
-                ;
+        RateJpa rateJpa = RateMapper.INSTANCE.toEntityJpa(rate);
+
+        PackJpa packJpa = PackMapper.INSTANCE.toEntityJpa(pack);
+        packJpa.setRate(rateJpa);
+        packRepositoryJpa.save(packJpa);
+        rateJpa.addPack(packJpa);
 
         // TODO validate
-        rateJpa.setPricePerHour(rate.getPricePerHour());
+//        rateJpa.setPricePerHour(rate.getPricePerHour());
 
-        var updatedRateJpa = rateRepositoryJpa.save(rateJpa);
+        RateJpa updatedRateJpa = rateRepositoryJpa.save(rateJpa);
 
         return RateMapper.INSTANCE.toEntity(updatedRateJpa);
     }

@@ -11,7 +11,5 @@ import lombok.Setter;
 @Setter
 public class LanguageOutputDto {
 
-    private Long idLanguage;
     private String name;
-    private String code;
 }

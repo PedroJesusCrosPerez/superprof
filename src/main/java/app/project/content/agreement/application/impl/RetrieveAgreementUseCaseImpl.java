@@ -4,6 +4,8 @@ import app.project.content.agreement.application.RetrieveAgreementUseCase;
 import app.project.content.agreement.domain.entity.Agreement;
 import app.project.content.agreement.domain.repository.RetrieveAgreementRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,15 @@ public class RetrieveAgreementUseCaseImpl implements RetrieveAgreementUseCase {
     @Override
     public List<Agreement> findAll() {
 
-        return retrieveAgreementRepository.findAll();
+        List<Agreement> agreementList = retrieveAgreementRepository.findAll();
+
+        return agreementList;
+//        return retrieveAgreementRepository.findAll();
+    }
+
+    @Override
+    public Page<Agreement> findAll(Pageable pageable) {
+
+        return retrieveAgreementRepository.findAll(pageable);
     }
 }

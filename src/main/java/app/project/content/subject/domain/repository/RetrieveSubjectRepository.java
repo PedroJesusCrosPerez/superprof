@@ -4,15 +4,9 @@ import app.project.content.subject.domain.entity.Subject;
 
 import java.util.List;
 
-public interface SubjectRepository {
-
-    Long saveSubject(Subject subject);
+public interface RetrieveSubjectRepository {
 
     Subject findByIdSubject(Long idSubject);
 
     List<Subject> findAllSubjects();
-
-    Subject updateSubject(Subject subject);
-
-    Boolean deleteByIdSubject(Long idSubject);
 }

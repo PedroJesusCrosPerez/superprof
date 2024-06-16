@@ -4,15 +4,8 @@ import app.project.content.subject.domain.entity.Subject;
 
 import java.util.List;
 
-public interface SubjectUseCase {
-
-    Long saveSubject(Subject subject);
+public interface RetrieveSubjectUsecase {
 
     Subject findByIdSubject(Long idSubject);
-
     List<Subject> findAllSubjects();
-
-    Subject updateSubject(Subject subject);
-
-    Boolean deleteByIdSubject(Long idSubject);
 }

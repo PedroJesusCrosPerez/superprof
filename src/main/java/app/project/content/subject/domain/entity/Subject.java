@@ -13,4 +13,5 @@ public class Subject {
 
     private Long idSubject;
     private String name;
+//    private List<Agreement> agreements;
 }

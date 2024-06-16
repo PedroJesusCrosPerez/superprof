@@ -6,6 +6,8 @@ import app.project.content.agreement.domain.repository.RetrieveAgreementReposito
 import app.project.content.agreement.infrastructure.repository.jpa.AgreementRepositoryJpa;
 import app.project.shared.exceptions.NotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -30,8 +32,32 @@ public class RetrieveAgreementRepositoryImpl implements RetrieveAgreementReposit
     @Override
     public List<Agreement> findAll() {
 
+//        List<AgreementJpa> agreementJpaList = agreementRepositoryJpa.findAll();
+//        return agreementJpaList.stream()
+//                .filter(this::hasNonEmptySubjects)
+//                .map(AgreementEntityMapper.INSTANCE::toEntity)
+//                .peek(this::postProcessAgreement)
+//                .collect(Collectors.toList());
+
         return agreementRepositoryJpa.findAll().stream()
                 .map(AgreementEntityMapper.INSTANCE::toEntity)
                 .toList();
+    }
+
+//    private boolean hasNonEmptySubjects(AgreementJpa agreementJpa) {
+//        return agreementJpa.getSubjects() != null && !agreementJpa.getSubjects().isEmpty();
+//    }
+//
+//    private void postProcessAgreement(Agreement agreement) {
+//        if (agreement.getSubjects() != null) {
+//            agreement.getSubjects().forEach(subject -> subject.setAgreements(null));
+//        }
+//    }
+
+    @Override
+    public Page<Agreement> findAll(Pageable pageable) {
+
+        return agreementRepositoryJpa.findAll(pageable)
+                .map(AgreementEntityMapper.INSTANCE::toEntity);
     }
 }

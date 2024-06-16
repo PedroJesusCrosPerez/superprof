@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/rate")
+@RequestMapping("/rates")
 @RequiredArgsConstructor
 public class RateRestController {
 
@@ -39,7 +39,13 @@ public class RateRestController {
     @PostMapping
     public ResponseEntity<Long> save(@RequestBody Rate rate) {
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(rateUseCase.save(rate));
+        return  ResponseEntity
+                .status(
+                        HttpStatus.CREATED
+                )
+                .body(
+                        rateUseCase.save(rate).getIdRate()
+                );
     }
 
     @PutMapping

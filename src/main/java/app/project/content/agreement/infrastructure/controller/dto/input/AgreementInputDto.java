@@ -18,6 +18,9 @@ public class AgreementInputDto {
     private String title;
     private String description;
     private String aboutMe;
+    private Boolean isActive = true;
+
+    private List<Long> idsSubjects;
     private List<EPlace> places;
     private List<Long> idsLanguages;
     private RateInputDto rate;

@@ -16,3 +16,22 @@ INSERT INTO roles (name) VALUES ('ROLE_ADMIN'),
 select * from users;
 select * from user_roles;
 select * from roles;
+
+UPDATE user_roles SET role_id = 1 WHERE user_id = 2;
+
+
+select * from agreement;
+select * from rate;
+select * from pack;
+
+select * from subject;
+select * from agreement_subject;
+
+select * from subject;
+
+
+DELETE FROM agreement WHERE id_agreement = 2;
+DELETE FROM rate WHERE id_rate = 2;
+DELETE FROM pack WHERE fk_rate = 2;
+
+SET FOREIGN_KEY_CHECKS = 1;

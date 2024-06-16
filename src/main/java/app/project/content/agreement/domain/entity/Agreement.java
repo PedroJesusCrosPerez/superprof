@@ -2,6 +2,7 @@ package app.project.content.agreement.domain.entity;
 
 import app.project.content.language.domain.entity.Language;
 import app.project.content.rate.domain.entity.Rate;
+import app.project.content.subject.domain.entity.Subject;
 import app.project.shared.enums.EPlace;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,9 +23,25 @@ public class Agreement {
     private String title;
     private String description;
     private String aboutMe;
+    private Boolean isActive;
+    private List<Subject> subjects;
     private List<EPlace> places;
     private List<Language> languages;
     private Rate rate;
+
+
+    public void addSubject(Subject subject) {
+        if (Objects.isNull(this.subjects)) {
+            this.subjects = new ArrayList<>();
+        }
+        this.subjects.add(subject);
+    }
+    public void removeSubject(Subject subject) {
+        if (Objects.isNull(this.subjects)) {
+            this.subjects = new ArrayList<>();
+        }
+        this.subjects.remove(subject);
+    }
 
     public void addLanguage(Language language) {
         if (Objects.isNull(this.languages)) {

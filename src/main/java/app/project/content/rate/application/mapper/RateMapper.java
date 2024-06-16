@@ -15,6 +15,7 @@ public interface RateMapper {
     RateMapper INSTANCE = Mappers.getMapper(RateMapper.class);
 
     // Entity
+//    @Mapping(target = "packs", ignore = true)
     Rate toEntity(RateInputDto rateInputDto);
 
     Rate toEntity(RateJpa rateJpa);

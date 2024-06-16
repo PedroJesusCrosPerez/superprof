@@ -1,10 +1,13 @@
 package app.project.content.subject.infrastructure.repository.jpa.entity;
 
+import app.project.content.agreement.infrastructure.repository.jpa.entity.AgreementJpa;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "subject")
@@ -22,5 +25,6 @@ public class SubjectJpa {
     @Column(name = "name")
     private String name;
 
-    // TODO one to many TeacherJpa
+    @ManyToMany(mappedBy = "subjects")
+    private List<AgreementJpa> agreements;
 }

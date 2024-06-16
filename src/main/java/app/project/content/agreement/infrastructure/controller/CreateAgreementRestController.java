@@ -1,7 +1,6 @@
 package app.project.content.agreement.infrastructure.controller;
 
 import app.project.content.agreement.application.CreateAgreementUseCase;
-import app.project.content.agreement.application.mapper.AgreementEntityMapper;
 import app.project.content.agreement.domain.entity.Agreement;
 import app.project.content.agreement.infrastructure.controller.dto.input.AgreementInputDto;
 import lombok.RequiredArgsConstructor;
@@ -23,17 +22,19 @@ public class CreateAgreementRestController {
     @PostMapping
     public ResponseEntity<Long> createAgreement(@RequestBody AgreementInputDto agreementInputDto) {
 
-        Agreement agreement = AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto);
+        Agreement createdAgreement = createAgreementUseCase.createNewAgreementWithRateAndPack(agreementInputDto);
 
         return  ResponseEntity
                 .status(
                         HttpStatus.CREATED
                 )
                 .body(
-                        createAgreementUseCase.save(
-//                                AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto)
-                                agreementInputDto
-                        )
+//                        createAgreementUseCase.save(
+////                                AgreementEntityMapper.INSTANCE.toEntity(agreementInputDto)
+//                                agreementInputDto
+//                        )
+
+                        createdAgreement.getIdAgreement()
                 );
     }
 }

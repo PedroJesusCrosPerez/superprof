@@ -3,7 +3,7 @@ package app.project.content.language.application.mapper;
 import app.project.content.language.domain.entity.Language;
 import app.project.content.language.infrastructure.controller.dto.input.LanguageInputDto;
 import app.project.content.language.infrastructure.controller.dto.input.LanguageUpdateInputDto;
-import app.project.content.language.infrastructure.controller.dto.output.LanguageOutputDto;
+import app.project.content.language.infrastructure.controller.dto.output.LanguageOutputDtoFull;
 import app.project.content.language.infrastructure.repository.jpa.entity.LanguageJpa;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -33,7 +33,7 @@ public interface LanguageMapper {
 
 
     // OutputDto
-    LanguageOutputDto toOutputDto(Language language);
+    LanguageOutputDtoFull toOutputDto(Language language);
 
-    List<LanguageOutputDto> toOutputDtoList(List<Language> languageList);
+    List<LanguageOutputDtoFull> toOutputDtoList(List<Language> languageList);
 }

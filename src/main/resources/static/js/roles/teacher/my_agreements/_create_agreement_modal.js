@@ -50,10 +50,35 @@ function throwCreateAgreementModal() {
                 <label for="text">Sobre mi:</label>
                 <input type="text" id="aboutMe" name="aboutMe">
                 
-                <label for="text">TODO Precios:</label>
-                <input type="text" id="rate" name="rate">
+                <div name="rate" style="
+                    grid-column: 1 / 3;
+                    display: ;
+                ">
+                    <div class="row">
+                        <label for="text">Oferta:</label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="text" id="rate" name="rate" size="2">
+                            <label for="rate">€/hora</label>                
+                        </div>
+                        <div class="col-12">
+                            <div id="addPackBtn">
+                                <p>Añadir</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div id="packs"></div>
+                        </div>
+                    <div>
+                </div>
             </form>
         `,
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'CREAR',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'CANCELAR',
         didOpen: () => {
 
             initAgreementForm()
@@ -78,15 +103,19 @@ function throwCreateAgreementModal() {
                 places.push('IN_PERSON');
             }
 
+
             const data = {
                 // idSubject: form['slctSubjects'].value,
                 title: form['title'].value,
-                place: places,
-                idsLanguages: idsLanguages,
                 description: form['description'].value,
                 aboutMe: form['aboutMe'].value,
+
+                idsSubjects: [form['slctSubjects'].value],
+                places: places,
+                idsLanguages: idsLanguages,
                 rate: {
-                    rate: form['rate'].value
+                    pricePerHour: form['rate'].value,
+                    packs: collectPacksData()
                 }
             };
 
@@ -98,20 +127,13 @@ function throwCreateAgreementModal() {
                 }
             }
 
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-            console.log(data)
-            console.log("DATOS A ENVIAR")
-            console.log("DATOS A ENVIAR")
-
             ajaxRequest("/agreements", "POST", data, function (response) {
                 console.log(response);
+                uploadAgreements();
+                launchSuccessModal('¡Enhorabuena!', 'Tu anuncio se ha creado con éxito.');
             }, function (jqXHR, textStatus, errorThrown) {
                 console.error('Error:', textStatus, errorThrown);
+                launchErrorModal('¡Error!', 'Ha ocurrido un error al crear tu anuncio, lo sentimos vuelva a intentarlo más tarde.');
             });
 
             return true;
@@ -129,6 +151,7 @@ function initAgreementForm() {
 
     initSubjects();
     initLanguages();
+    initRate();
 }
 
 function initSubjects() {
@@ -139,6 +162,35 @@ function initSubjects() {
 function initLanguages() {
 
     uploadLanguages();
+}
+
+function initRate() {
+
+    $('#addPackBtn').on('click', function () {
+        $('#packs').append(`
+            <div class="pack">
+                <input type="number" name="packHours" size="3" max="999" maxlength="3" min="0">
+                <span>horas</span>
+                <input type="number" name="packPrice" size="3" max="999" maxlength="3" min="0">
+                <span>€</span>
+                <div class="remove-pack">Eliminar</div>
+            </div>
+        `);
+    });
+    $('#packs').append(`
+            <div class="pack">
+                <input type="number" name="packHours" size="3" max="999" maxlength="3" min="0">
+                <span>horas</span>
+                <input type="number" name="packPrice" size="3" max="999" maxlength="3" min="0">
+                <span>€</span>
+                <div class="remove-pack">Eliminar</div>
+            </div>
+        `);
+
+    $('#packs').on('click', '.remove-pack', function () {
+        $(this).parent().remove();
+    });
+
 }
 
 function uploadSubjects() {
@@ -207,5 +259,24 @@ function uploadLanguages() {
         // Eliminar el elemento del div #selectedLanguages
         languageElement.remove();
     });
+}
+
+function collectPacksData() {
+    const packsData = [];
+
+    $('#packs .pack').each(function(index) {
+        const packHours = $(this).find('input[name="packHours"]').val();
+        const packPrice = $(this).find('input[name="packPrice"]').val();
+
+        // Validar que ambos campos tengan valores antes de agregar al array
+        if (packHours !== '' && packPrice !== '') {
+            packsData.push({
+                hours: packHours,
+                price: packPrice
+            });
+        }
+    });
+
+    return packsData;
 }
 
