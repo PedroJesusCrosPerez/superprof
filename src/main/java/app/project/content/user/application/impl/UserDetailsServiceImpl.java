@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -44,27 +45,34 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   }
 
   public void saveUser(SignupRequest signupRequest) {
+    if (signupRequest.getPassword() == null) {
+      throw new IllegalArgumentException("Password cannot be null");
+    }
+
     User user = new User();
     user.setUsername(signupRequest.getUsername());
     user.setEmail(signupRequest.getEmail());
-    user.setPassword(passwordEncoder.encode(signupRequest.getPassword()));
+    user.setPassword(
+            passwordEncoder.encode(
+                    signupRequest.getPassword()
+            )
+    );
 
-    System.out.println("ROLE_ADMIN");
-    System.out.println(ERole.ROLE_ADMIN.toString());
-    String strRole = ERole.ROLE_ADMIN.toString();
-    System.out.println(strRole);
-//    Role role = roleRepository.findByName(ERole.ROLE_ADMIN)
-    Role role = roleRepository.findByName("ROLE_" + ERole.ROLE_ADMIN)
-            .orElseThrow(
-                    () -> new RuntimeException("Error: Role is not found.")
-            );
+//    String defaultRole = ERole.ROLE_UNASSIGNED.toString();
+//    Role role = roleRepository.findByName(defaultRole)
+//            .orElseThrow(
+//                    () -> new RuntimeException("Error: Role is not found.")
+//            );
+
+    List<Role> roles = roleRepository.findAll();
+    Role role = roles.getLast();
 
     if (role == null) {
-      role = new Role(ERole.ROLE_USER);
+      role = new Role(ERole.ROLE_UNASSIGNED);
       role = roleRepository.save(role);
     }
-
     user.setRoles(Set.of(role));
+
     userRepository.save(user);
   }
 

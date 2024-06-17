@@ -2,8 +2,11 @@ package app.project;
 
 import app.project.content.language.infrastructure.repository.jpa.LanguageRepositoryJpa;
 import app.project.content.language.infrastructure.repository.jpa.entity.LanguageJpa;
+import app.project.content.role.domain.entity.Role;
+import app.project.content.role.domain.repository.RoleRepository;
 import app.project.content.subject.infrastructure.repository.jpa.SubjectRepositoryJpa;
 import app.project.content.subject.infrastructure.repository.jpa.entity.SubjectJpa;
+import app.project.shared.enums.ERole;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -14,6 +17,15 @@ import java.util.Arrays;
 public class App {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
+
+        // Roles
+        var roleRepository = context.getBean(RoleRepository.class);
+        Role role1 = new Role(ERole.ROLE_ADMIN);
+        Role role2 = new Role(ERole.ROLE_TEACHER);
+        Role role3 = new Role(ERole.ROLE_USER);
+        Role role4 = new Role(ERole.ROLE_UNASSIGNED);
+
+        roleRepository.saveAll(Arrays.asList(role1, role2, role3, role4));
 
 //        Insertar datos de ejemplo
 

@@ -21,7 +21,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -193,5 +192,33 @@ public class AuthController {
         } else {
             return "redirect:/";
         }
+    }
+
+
+    @PostMapping("/register/save")
+    public String registration(
+            @RequestBody SignupRequest signupRequest,
+            BindingResult result,
+            Model model
+    ) { //Model attribute is used to extract model object which is a form data.
+
+
+////        User existingUser = userDetailsService.findByEmail(signupRequest.getEmail()); //checking if entered email already exists or not.
+//        User existingUser = userRepository.findByEmail(signupRequest.getEmail()).orElseThrow(
+//                () -> new RuntimeException("User Not Found with email: " + signupRequest.getEmail())
+//        ); //checking if entered email already exists or not.
+//
+//        if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
+//            result.rejectValue("email", null, "there is already an account existed with this email");
+//        }
+
+        if (result.hasErrors()) {
+            model.addAttribute("user", signupRequest);
+            return "/register"; // if any form has errors it will be redirected to register page only.
+        }
+
+        userDetailsService.saveUser(signupRequest);
+        return "redirect:/register?success"; // @Valid from jakarta.validation will enable the validation fields of dto objectsto be enabled.
+
     }
 }
