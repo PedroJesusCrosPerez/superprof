@@ -3,6 +3,7 @@ package app.project.content.user.infrastructure.controller;
 import app.project.config.security.jwt.JwtUtils;
 import app.project.content.role.domain.repository.RoleRepository;
 import app.project.content.user.application.impl.UserDetailsImpl;
+import app.project.content.user.application.impl.UserDetailsServiceImpl;
 import app.project.content.user.domain.entity.User;
 import app.project.content.user.domain.repository.UserRepository;
 import app.project.content.user.infrastructure.dto.input.LoginRequest;
@@ -20,6 +21,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,6 +40,7 @@ public class AuthController {
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
     private final JwtUtils jwtUtils;
+    private final UserDetailsServiceImpl userDetailsService;
 
 
     @PostMapping("/signin")
@@ -151,6 +156,24 @@ public class AuthController {
 //            return "redirect:/";
 //        }
 //    }
+//    @GetMapping("/signin/accepted")
+//    public String postSignIn(@RequestParam("token") String token) {
+//        // Aquí puedes verificar el token y obtener el usuario correspondiente
+//        // Por ahora, solo obtenemos el usuario autenticado actualmente
+//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//        String role = authentication.getAuthorities().stream()
+//                .map(GrantedAuthority::getAuthority)
+//                .findFirst()
+//                .orElse("");
+//
+//        if (role.equals("ROLE_ADMIN")) {
+//            return "redirect:/admin/dashboard";
+//        } else if (role.equals("ROLE_USER")) {
+//            return "redirect:/user/dashboard";
+//        } else {
+//            return "redirect:/";
+//        }
+//    }
     @GetMapping("/signin/accepted")
     public String postSignIn(@RequestParam("token") String token) {
         // Aquí puedes verificar el token y obtener el usuario correspondiente
@@ -163,6 +186,8 @@ public class AuthController {
 
         if (role.equals("ROLE_ADMIN")) {
             return "redirect:/admin/dashboard";
+        } else if (role.equals("ROLE_TEACHER")) {
+            return "redirect:/teacher/dashboard";
         } else if (role.equals("ROLE_USER")) {
             return "redirect:/user/dashboard";
         } else {

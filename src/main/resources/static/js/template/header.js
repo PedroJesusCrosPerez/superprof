@@ -12,6 +12,7 @@ $( function() {
                 password: $('#signup-form input[name="password"]').val()
             }),
             success: function(response) {
+                redirect(response.roles)
                 console.log(response);
             },
             error: function(error) {
@@ -22,6 +23,8 @@ $( function() {
 
     $('#submitSignIn').click(function() {
 
+        signIn();
+        /*
         $.ajax({
             url: '/auth/signin',
             type: 'POST',
@@ -42,12 +45,77 @@ $( function() {
                 console.log(error);
             }
         });
+         */
     });
 });
 
 
-function redirect() {
+function redirect(roles) {
+
     let jwtToken = localStorage.getItem('jwtToken'); // Recupera el token JWT del almacenamiento local
+
+    if (!roles) {
+        console.error('No roles provided');
+        return;
+    }
+
+    roles.forEach(role => {
+
+        console.log(role);
+
+        switch (role.toUpperCase()) {
+            case 'ROLE_ADMIN':
+                window.location.href = '/admin/dashboard';
+                break;
+            case 'ROLE_TEACHER':
+                window.location.href = '/teacher/dashboard';
+                break;
+            case 'ROLE_USER':
+                window.location.href = '/user/dashboard';
+                break;
+            case 'ROLE_UNASSIGNED':
+                window.location.href = '/unassigned/dashboard';
+                break;
+            default:
+                window.location.href = '/auth/signin/accepted?token=' + jwtToken;
+                break;
+        }
+    })
+
+
+    // $.ajax({
+    //     url: '/admin/dashboard',
+    //     type: 'GET',
+    //     headers: {
+    //         'Authorization': 'Bearer ' + jwtToken
+    //     },
+    //     success: function(data) {
+    //         // Maneja la respuesta de la solicitud
+    //         console.log(data);
+    //     },
+    //     error: function(err) {
+    //         // Maneja cualquier error que pueda ocurrir
+    //         console.error('Error al realizar la solicitud:', err);
+    //     }
+    // });
+}
+
+function signIn() {
+
+    ajaxRequest('/auth/signin', 'POST', {
+        username: $('#signin-form input[name="username"]').val(),
+        password: $('#signin-form input[name="password"]').val()
+    }, function(response) {
+        localStorage.setItem('jwtToken', response.token);
+        redirect(response.roles);
+    }, function(error) {
+        launchErrorModal(' Error ', '¡¡Sus credenciales no son válidas!! Inténtelo de nuevo.');
+        console.log(error);
+    });
+}
+
+function random() {
+    let jwtToken = localStorage.getItem('jwtToken');
 
     $.ajax({
         url: '/admin/dashboard',

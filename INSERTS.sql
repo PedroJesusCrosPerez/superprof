@@ -11,13 +11,12 @@ INSERT INTO roles (name) VALUES ('ROLE_ADMIN'),
                                 ('ROLE_USER'),
                                 ('ROLE_UNASSIGNED');
 
-
-
 select * from users;
 select * from user_roles;
 select * from roles;
 
-UPDATE user_roles SET role_id = 1 WHERE user_id = 2;
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+UPDATE user_roles SET role_id = 2 WHERE user_id = 1;
 
 
 select * from agreement;

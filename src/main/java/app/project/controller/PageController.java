@@ -11,33 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequiredArgsConstructor
 public class PageController {
 
-    @GetMapping("/page1")
-    public String page1() {
-        return "page1";
-    }
-
-    @GetMapping("/index")
-    public String index2() {
-        return "index";
-    }
-    @GetMapping("/details")
-    public String showDetails() {
-        return "details";
-    }
-
-
-    @GetMapping("/index_copilot")
-    public String index_copilot() {
-        return "index_copilot";
-    }
-    @GetMapping("/details_copilot")
-    public String details_copilot() {
-        return "details_copilot";
-    }
-
 
     @GetMapping("/")
-    public String index() {
+    public String start() {
         return "redirect:home";
     }
 
@@ -46,7 +22,20 @@ public class PageController {
         return "home";
     }
 
-    @GetMapping("/teacher")
+    @GetMapping("/index")
+    public String index() {
+        return "index";
+    }
+
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
+
+
+
+
+    @GetMapping("/findByIdTeacher")
     public String teacherById(@RequestParam(defaultValue = "1") Long idTeacher) {
         return "findByIdTeacher";
     }
@@ -59,4 +48,25 @@ public class PageController {
         model.addAttribute("agreements", agreementRepositoryJpa.findAll());
         return "test";
     }
+
+
+    @GetMapping("/dashboard")
+    public String dashboard() {
+        return "roles/dashboard";
+    }
+
+    @GetMapping("/admin/dashboard")
+    public String dashboard_admin() {
+        return "roles/admin/dashboard";
+    }
+
+    @GetMapping("/teacher/dashboard")
+    public String dashboard_teacher2() {
+        return "roles/teacher/dashboard";
+    }
+
+//    @GetMapping("/user/dashboard")
+//    public String dashboard_user() {
+//        return "roles/user/dashboard";
+//    }
 }

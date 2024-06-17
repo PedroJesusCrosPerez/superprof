@@ -1,7 +1,6 @@
 package app.project.content.role.infrastructure.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class RoleController {
@@ -42,13 +41,13 @@ public class RoleController {
 //    }
 
 
-    @GetMapping("/admin/dashboard")
-    public String adminDashboard() {
-        return "roles/admin/dashboard";
-    }
-
-    @GetMapping("/teacher/dashboard")
-    public String teacherDashboard() {
-        return "roles/teacher/dashboard";
-    }
+//    @GetMapping("/admin/dashboard")
+//    public String adminDashboard() {
+//        return "roles/admin/dashboard";
+//    }
+//
+//    @GetMapping("/teacher/dashboard")
+//    public String teacherDashboard() {
+//        return "roles/teacher/dashboard";
+//    }
 }
