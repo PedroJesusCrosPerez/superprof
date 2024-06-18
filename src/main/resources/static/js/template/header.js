@@ -95,8 +95,8 @@ function signUp() {
         photo: $('#signup-form input[name="photo"]')[0].files[0].name
     };
 
-    formData.append('user', JSON.stringify([userInput]));
-    formData.append('file', $('#signup-form input[name="photo"]')[0].files[0]);
+    formData.append('signUpRequest', JSON.stringify([userInput]));
+    formData.append('photo', $('#signup-form input[name="photo"]')[0].files[0]);
 
     $.ajax({
         url: '/auth/signup/withphoto',
@@ -114,6 +114,7 @@ function signUp() {
             console.log(error);
         }
     });
+    window.location.href = '/home';
 
     // $.ajax({
     //     url: '/auth/signup',

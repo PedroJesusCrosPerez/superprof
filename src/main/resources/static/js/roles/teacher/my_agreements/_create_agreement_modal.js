@@ -19,7 +19,7 @@ function throwCreateAgreementModal() {
                 <input type="text" id="title" name="title">
                 
                 <label for="text">Lugar:</label>
-                <div style="
+                <div id="divPlaces" style="
                     display: grid;
                     grid-template-columns: 1fr 1fr;
                     grid-template-rows: 1.2em;
@@ -119,12 +119,64 @@ function throwCreateAgreementModal() {
                 }
             };
 
+            const errors = [];
             // Validar los campos del formulario
             for (let key in data) {
+
                 if (data[key] === '') {
-                    Swal.showValidationMessage(`Por favor ingrese ${key}`);
-                    return;
+                    errors.push(key);
+                    const inputElement = form[key];
+                    $(inputElement).addClass('error');
+                    setTimeout(() => {
+                        $(inputElement).removeClass('error');
+                    }, 2200);
+                    Swal.showValidationMessage(`Por favor, completa el campo ${key}`);
                 }
+
+                if (key === 'idsSubjects') {
+                    if (data[key].length === 0 || data[key] === null || data[key] === undefined) {
+                        errors.push(key);
+                        $('#slctSubjects').addClass('error');
+                        setTimeout(() => {
+                            $('#slctSubjects').removeClass('error');
+                        }, 2200);
+                        Swal.showValidationMessage('Por favor, selecciona una asignatura');
+                    }
+                }
+
+                if (key === 'rate') {
+                    if (data[key].pricePerHour === '' || data[key] === null) {
+                        errors.push(key);
+                        $('#rate').addClass('error');
+                        setTimeout(() => {
+                            $('#rate').removeClass('error');
+                        }, 2200);
+                        Swal.showValidationMessage('Por favor, introduce el campo precio por hora');
+                    }
+                    if (data[key].packs.length === 0) {
+                        errors.push(key);
+                        $('#packs').addClass('error');
+                        setTimeout(() => {
+                            $('#packs').removeClass('error');
+                        }, 2200);
+                        Swal.showValidationMessage('Por favor, introduce al menos un pack');
+                    }
+                }
+
+                if (key === 'places') {
+                    if (data[key].length === 0 || data[key] === null) {
+                        errors.push(key);
+                        $('#divPlaces').addClass('error');
+                        setTimeout(() => {
+                            $('#divPlaces').removeClass('error');
+                        }, 2200);
+                        Swal.showValidationMessage('Por favor, selecciona al menos un lugar');
+                    }
+                }
+            }
+
+            if (errors.length > 0) {
+                return false;
             }
 
             ajaxRequest("/agreements", "POST", data, function (response) {
@@ -251,7 +303,8 @@ function uploadLanguages() {
     $('#selectedLanguages').on('click', '.remove-language', function () {
         var languageElement = $(this).parent();
         var language = languageElement.text().replace(' Eliminar', '');
-        var value = languageElement.data('value');
+        language = language.slice(0, -8);
+        var value = languageElement.attr('data-idlanguage');
 
         // Mover el idioma de vuelta al select
         $('#slctLanguages').append('<option value="' + value + '">' + language + '</option>');
