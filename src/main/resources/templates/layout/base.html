@@ -46,7 +46,9 @@
 </header>
 -->
 
-<header sec:authorize="hasAuthority('ADMIN')" th:insert="layout/header"></header>
+<header sec:authorize="hasRole('ADMIN')" th:insert="layout/header"></header>
+
+<header sec:authorize="hasRole('TEACHER')" th:insert="layout/header_teacher"></header>
 
 <header sec:authorize="!isAuthenticated()" th:insert="layout/header_notAuthenticated"></header>
 

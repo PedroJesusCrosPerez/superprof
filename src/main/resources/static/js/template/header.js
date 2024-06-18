@@ -2,23 +2,7 @@ $( function() {
 
     $('#submitSignUp').click(function() {
 
-        $.ajax({
-            url: '/auth/signup',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                username: $('#signup-form input[name="username"]').val(),
-                email: $('#signup-form input[name="email"]').val(),
-                password: $('#signup-form input[name="password"]').val()
-            }),
-            success: function(response) {
-                redirect(response.roles)
-                console.log(response);
-            },
-            error: function(error) {
-                console.log(error);
-            }
-        });
+        signUp();
     });
 
     $('#submitSignIn').click(function() {
@@ -100,18 +84,69 @@ function redirect(roles) {
     // });
 }
 
+function signUp() {
+
+    const formData = new FormData();
+
+    const userInput = {
+        username: $('#signup-form input[name="username"]').val(),
+        email: $('#signup-form input[name="email"]').val(),
+        password: $('#signup-form input[name="password"]').val(),
+        photo: $('#signup-form input[name="photo"]')[0].files[0].name
+    };
+
+    formData.append('user', JSON.stringify([userInput]));
+    formData.append('file', $('#signup-form input[name="photo"]')[0].files[0]);
+
+    $.ajax({
+        url: '/auth/signup/withphoto',
+        type: 'POST',
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        data: formData,
+        success: function(response) {
+            // redirect(response.roles)
+            window.location.href = '/home';
+            console.log(response);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    });
+
+    // $.ajax({
+    //     url: '/auth/signup',
+    //     type: 'POST',
+    //     contentType: 'application/json',
+    //     data: JSON.stringify({
+    //         username: $('#signup-form input[name="username"]').val(),
+    //         email: $('#signup-form input[name="email"]').val(),
+    //         password: $('#signup-form input[name="password"]').val()
+    //     }),
+    //     success: function(response) {
+    //         redirect(response.roles)
+    //         console.log(response);
+    //     },
+    //     error: function(error) {
+    //         console.log(error);
+    //     }
+    // });
+}
+
 function signIn() {
 
-    ajaxRequest('/auth/signin', 'POST', {
-        username: $('#signin-form input[name="username"]').val(),
-        password: $('#signin-form input[name="password"]').val()
-    }, function(response) {
-        localStorage.setItem('jwtToken', response.token);
-        redirect(response.roles);
-    }, function(error) {
-        launchErrorModal(' Error ', '¡¡Sus credenciales no son válidas!! Inténtelo de nuevo.');
-        console.log(error);
-    });
+        ajaxRequest('/auth/signin', 'POST', {
+            username: $('#signin-form input[name="username"]').val(),
+            password: $('#signin-form input[name="password"]').val()
+        }, function(response) {
+            localStorage.setItem('jwtToken', response.token);
+            $('#signin-form').submit();
+            redirect(response.roles);
+        }, function(error) {
+            launchErrorModal(' Error ', '¡¡Sus credenciales no son válidas!! Inténtelo de nuevo.');
+            console.log(error);
+        });
 }
 
 function random() {

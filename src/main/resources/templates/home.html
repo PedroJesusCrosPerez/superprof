@@ -1,5 +1,7 @@
 <!DOCTYPE html ><!--"http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">-->
-<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- xmlns:sec="http://www.w3.org/1999/xhtml">-->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+> <!-- xmlns:sec="http://www.w3.org/1999/xhtml">-->
 <head th:replace="layout/base::layout(~{::title}, ~{::fragment_css}, ~{::fragment_js}, ~{::main})">
     <title th:text="#{inicio}">Home</title>
 
@@ -39,6 +41,9 @@
 -->
 
 <header th:replace="layout/base :: header"></header>
+<!--<header sec:authorize="hasAuthority('ADMIN')" th:insert="layout/base :: header"></header>
+<header sec:authorize="!isAuthenticated()" th:insert="layout/header_notAuthenticated"></header>-->
+
 
 <main th:fragment="main">
     <div class="sp-global">

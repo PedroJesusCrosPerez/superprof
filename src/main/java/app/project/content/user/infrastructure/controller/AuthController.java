@@ -24,7 +24,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -220,5 +225,104 @@ public class AuthController {
         userDetailsService.saveUser(signupRequest);
         return "redirect:/register?success"; // @Valid from jakarta.validation will enable the validation fields of dto objectsto be enabled.
 
+    }
+
+    @PostMapping("/signup/withphoto")
+    public ResponseEntity<MessageResponse> registerUser(
+            @Valid SignupRequest signUpRequest,
+            @RequestParam("photo") MultipartFile file
+    ) {
+        // Validaciones de existencia de usuario y correo electrónico
+        if (userRepository.existsByUsername(signUpRequest.getUsername())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Username is already taken!"));
+        }
+
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        // Validar tipo de archivo (opcional, si es necesario)
+        String photoPath = null;
+        if (!file.isEmpty()) {
+            String contentType = file.getContentType();
+            if (!"image/jpeg".equals(contentType) && !"image/png".equals(contentType)) {
+                return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).build();
+            }
+
+            photoPath = "errorfoto.jpg";
+            // Guardar el archivo en el servidor
+            try {
+                String uploadsDir = "src/main/resources/static/uploads/user/";
+                Path path = Paths.get(uploadsDir + file.getOriginalFilename());
+                Files.copy(file.getInputStream(), path);
+//                signUpRequest.setPhoto(path.toString()); // Guardar la ruta del archivo en el objeto SignUpRequest
+                photoPath = path.toString();
+                // Crear nuevo usuario
+            } catch (IOException e) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            }
+        }
+
+        assert photoPath != null;
+        User user = new User(
+                signUpRequest.getUsername()
+                , signUpRequest.getEmail()
+                , encoder.encode(signUpRequest.getPassword())
+                , photoPath
+        );
+
+
+        // Guardar usuario en la base de datos
+        user.setId(userRepository.save(user).getId());
+        user.addRole(roleRepository.findByName(ERole.ROLE_UNASSIGNED)
+                .orElseThrow(() -> new RuntimeException("Error: there aren't default roles assigned in Role table."))
+        );
+
+        User newUser = userRepository.save(user);
+
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(new MessageResponse("User registered successfully! " + newUser.getEmail()));
+    }
+
+    @PostMapping("/uploadUserImage")
+    public ResponseEntity<?> uploadUserImage(@RequestPart("file") MultipartFile file) {
+        // Validar tipo de archivo
+        String contentType = file.getContentType();
+        if (!"image/jpeg".equals(contentType) && !"image/png".equals(contentType)) {
+            return ResponseEntity.status(HttpStatus.UNSUPPORTED_MEDIA_TYPE).build();
+        }
+
+        // Guardar el archivo en la carpeta especificada
+        String folderPath = "src/main/resources/static/uploads/user/";
+        String fileName = file.getOriginalFilename();
+        Path path = Paths.get(folderPath + fileName);
+        try {
+            Files.copy(file.getInputStream(), path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
+        // Set the file path to each User entity
+//        user.setFotoEscudo("/uploads/user/" + fileName);
+//        createUserUseCase.saveAll(equipos);
+
+//        JwtResponse response = user.stream()
+//                .map(UserMapper.INSTANCE::toOutputDto)
+//                .collect(Collectors.toList());
+
+//        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+        return  ResponseEntity
+                .status(
+                        HttpStatus.CREATED
+                )
+                .body(
+                        new MessageResponse("User image uploaded successfully!")
+                );
     }
 }

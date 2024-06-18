@@ -131,11 +131,10 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
               .requestMatchers("/auth/register/**").permitAll()
               .requestMatchers("/index").permitAll() //For matching http request requests.
               .requestMatchers("/dashboard").hasAnyRole("ADMIN","TEACHER")
-              .requestMatchers("/admin/**").hasRole("ADMIN")
-              .requestMatchers("/teacher/**").hasRole("TEACHER")
 
               // Service REST
               .requestMatchers("/auth/**").permitAll()
+              .requestMatchers("/agreements/**").permitAll()
               //Roles
               .requestMatchers("/admin/**").hasRole("ADMIN")
               .requestMatchers("/teacher/**").hasRole("TEACHER")

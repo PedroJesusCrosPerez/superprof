@@ -97,20 +97,28 @@ import java.util.Set;
 public class User {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
   private Long id;
 
   @NotBlank
   @Size(max = 20)
+  @Column(name = "username")
   private String username;
 
   @NotBlank
   @Size(max = 50)
   @Email
+  @Column(name = "email")
   private String email;
 
   @NotBlank
   @Size(max = 120)
+  @Column(name = "password")
   private String password;
+
+  @NotBlank
+  @Column(name = "photo")
+  private String photo;
 
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(  name = "user_roles",
@@ -122,6 +130,12 @@ public class User {
     this.username = username;
     this.email = email;
     this.password = password;
+  }
+  public User(String username, String email, String password, String photo) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+    this.photo = photo;
   }
 
   public void addRole(Role role) {

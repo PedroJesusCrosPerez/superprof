@@ -15,8 +15,9 @@ select * from users;
 select * from user_roles;
 select * from roles;
 
-INSERT INTO user_roles (user_id, role_id) VALUES (1, 1);
+INSERT INTO user_roles (user_id, role_id) VALUES (1, 2);
 UPDATE user_roles SET role_id = 2 WHERE user_id = 1;
+DELETE FROM user_roles WHERE role_id = 4;
 
 
 select * from agreement;

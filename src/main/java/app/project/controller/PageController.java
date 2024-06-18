@@ -60,11 +60,20 @@ public class PageController {
         return "roles/admin/dashboard";
     }
 
+
     @GetMapping("/teacher/dashboard")
-    public String dashboard_teacher2() {
+    public String dashboard_teacher() {
         return "roles/teacher/dashboard";
     }
 
+
+
+    @GetMapping("/subject/search")
+    public String subject_search(
+
+    ) {
+        return "roles/unassigned/findBySubjectName";
+    }
 //    @GetMapping("/user/dashboard")
 //    public String dashboard_user() {
 //        return "roles/user/dashboard";

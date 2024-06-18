@@ -63,5 +63,5 @@ $(function () {
 
 function seachSubjectByName(name) {
 
-    window.location.href = `/subjects/search?name=${name}`
+    window.location.href = `/subject/search?name=${name}`
 }
