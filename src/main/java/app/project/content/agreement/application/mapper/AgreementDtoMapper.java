@@ -1,6 +1,7 @@
 package app.project.content.agreement.application.mapper;
 
 import app.project.content.agreement.domain.entity.Agreement;
+import app.project.content.agreement.infrastructure.controller.dto.input.AgreementPatchUpdateInputDto;
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDto;
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDtoFull;
 import app.project.content.agreement.infrastructure.controller.dto.output.AgreementOutputDtoFullOneSubject;
@@ -9,7 +10,6 @@ import app.project.content.subject.domain.entity.Subject;
 import app.project.content.subject.infrastructure.controller.dto.output.SubjectOutputDtoFull;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
@@ -39,4 +39,6 @@ public interface AgreementDtoMapper {
     }
 
     List<AgreementOutputDtoFull> toOutputDtoListFull(List<Agreement> agreement);
+
+    AgreementPatchUpdateInputDto toInputDtoPatch(Agreement agreement);
 }

@@ -1,23 +1,14 @@
 package app.project;
 
-import app.project.content.language.infrastructure.repository.jpa.LanguageRepositoryJpa;
-import app.project.content.language.infrastructure.repository.jpa.entity.LanguageJpa;
-import app.project.content.role.domain.entity.Role;
-import app.project.content.role.domain.repository.RoleRepository;
-import app.project.content.subject.infrastructure.repository.jpa.SubjectRepositoryJpa;
-import app.project.content.subject.infrastructure.repository.jpa.entity.SubjectJpa;
-import app.project.shared.enums.ERole;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-import java.util.Arrays;
 
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
-
+/*
         // Roles
         var roleRepository = context.getBean(RoleRepository.class);
         Role role1 = new Role(ERole.ROLE_ADMIN);
